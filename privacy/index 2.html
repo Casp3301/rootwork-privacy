@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Rootwork</title>
+<meta name="description" content="Rootwork privacy policy. Your health information never leaves your device.">
+<meta name="color-scheme" content="light dark">
+</head>
+<body>
+<style>
+  /* Palette lifted from Rootwork's own theme tokens (src/theme.jsx): the Garden
+     garden for light, Midnight Garden for dark. The policy should look like it
+     came from inside the app, not from a generic legal template. */
+  :root{
+    --paper:#FAFAF8; --paper-alt:#F1F0EA; --card:#FFFFFF;
+    --ink:#26301F; --ink-soft:#5C6B52; --ink-faint:#666E5C;
+    --fern:#3F5E3A; --sage:#7A9A6D; --sage-pale:#DCE6D3;
+    --gold:#A67E2C; --line:#E1E4D8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#191D19; --paper-alt:#20261F; --card:#232A22;
+      --ink:#E7E9E0; --ink-soft:#A9B2A2; --ink-faint:#9CA394;
+      --fern:#7A9A6D; --sage:#93A68A; --sage-pale:#2C3529;
+      --gold:#C9BB8E; --line:#2E3529;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#191D19; --paper-alt:#20261F; --card:#232A22;
+    --ink:#E7E9E0; --ink-soft:#A9B2A2; --ink-faint:#9CA394;
+    --fern:#7A9A6D; --sage:#93A68A; --sage-pale:#2C3529;
+    --gold:#C9BB8E; --line:#2E3529;
+  }
+  :root[data-theme="light"]{
+    --paper:#FAFAF8; --paper-alt:#F1F0EA; --card:#FFFFFF;
+    --ink:#26301F; --ink-soft:#5C6B52; --ink-faint:#666E5C;
+    --fern:#3F5E3A; --sage:#7A9A6D; --sage-pale:#DCE6D3;
+    --gold:#A67E2C; --line:#E1E4D8;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Iowan Old Style','Times New Roman',serif;
+    font-size:17px; line-height:1.72; -webkit-text-size-adjust:100%;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:42rem; margin:0 auto; padding:4rem 1.4rem 5rem;
+        display:flex; flex-direction:column; gap:0}
+
+  header{text-align:center; padding-bottom:2rem; border-bottom:1px solid var(--line); margin-bottom:2.75rem}
+  .sprout{width:26px; height:26px; margin:0 auto .75rem; display:block; color:var(--sage)}
+  h1{font-size:clamp(1.9rem,5vw,2.3rem); line-height:1.15; margin:0 0 .6rem;
+     color:var(--fern); font-weight:600; letter-spacing:-.015em; text-wrap:balance}
+  .meta{margin:0; font-size:.78rem; color:var(--ink-faint);
+        font-family:ui-sans-serif,-apple-system,'Helvetica Neue',sans-serif;
+        font-weight:600; text-transform:uppercase; letter-spacing:.11em}
+
+  h2{font-size:1.18rem; margin:2.75rem 0 .8rem; color:var(--fern); font-weight:600;
+     letter-spacing:-.005em; text-wrap:balance;
+     font-family:ui-sans-serif,-apple-system,'Helvetica Neue',sans-serif}
+  /* the gold tick that precedes every section label inside Rootwork */
+  h2::before{content:""; display:block; width:15px; height:1.5px; background:var(--gold);
+             opacity:.9; margin-bottom:.8rem; border-radius:2px}
+  h2:first-of-type{margin-top:0}
+
+  p{margin:0 0 1.05rem}
+  strong{font-weight:700}
+  code{font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:.85em;
+       background:var(--paper-alt); padding:.1em .4em; border-radius:5px;
+       border:1px solid var(--line); color:var(--ink-soft)}
+
+  .lede{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--sage);
+        border-radius:12px; padding:1.2rem 1.4rem; margin:0 0 1.05rem}
+  .lede p:last-child{margin-bottom:0}
+
+  hr{border:0; border-top:1px solid var(--line); margin:3.25rem 0 1.75rem}
+  footer{text-align:center; font-style:italic; color:var(--ink-faint); font-size:.95rem; line-height:1.65}
+
+  @media (max-width:600px){
+    body{font-size:16px}
+    .wrap{padding:2.5rem 1.15rem 3.5rem}
+  }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <svg class="sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 22V11"></path>
+      <path d="M12 11C12 8 10 5.5 6.5 5.5 6.5 9 8.5 11 12 11Z"></path>
+      <path d="M12 11c0-3.2 2.2-5.8 5.5-5.8C17.5 8.6 15.4 11 12 11Z"></path>
+    </svg>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Rootwork · Last updated 3 August 2026</p>
+  </header>
+
+  <p>Rootwork is a personal symptom log for pain, medication, and chronic
+  conditions. This policy explains exactly what the app does and does not do with
+  your information. It is written to be specific rather than reassuring — every
+  claim below describes actual behaviour of the app.</p>
+
+  <h2>The short version</h2>
+  <div class="lede">
+    <p><strong>Your health information never leaves your device.</strong> Rootwork
+    has no user accounts, no analytics, no advertising, no crash reporting, and no
+    server that receives your entries. Nothing you record is transmitted anywhere.</p>
+  </div>
+
+  <h2>What Rootwork stores, and where</h2>
+  <p>Everything you enter — pain entries, medications and dose logs, journal
+  entries and photos, flares, PainFrames, care events, condition logs, body-map
+  drawings, settings and preferences — is stored <strong>only in local storage on
+  your device</strong>.</p>
+  <p>Journal photos are written to the app's private data directory on your
+  device. No copy is uploaded.</p>
+  <p>We cannot see any of it. There is no account to log into, and no mechanism by
+  which your entries reach us or anyone else.</p>
+
+  <h2>What leaves your device</h2>
+  <p>Rootwork makes network requests in exactly two situations, both optional:</p>
+  <p><strong>1. Weather and air quality.</strong> If you enable weather features,
+  the app sends your approximate coordinates to <strong>Open-Meteo</strong>
+  (<code>open-meteo.com</code>) to retrieve forecast, historical and air-quality
+  data for your area. No health information is included in these requests.</p>
+  <p><strong>2. Place names.</strong> To display a readable location name instead
+  of raw coordinates, the app sends your approximate coordinates to
+  <strong>BigDataCloud</strong> (<code>bigdatacloud.net</code>) for reverse
+  geocoding. No health information is included.</p>
+  <p>These requests contain coordinates only. They do not contain your entries,
+  your name, an account identifier, or a device identifier assigned by us. As with
+  any internet request, the receiving service can observe the originating IP
+  address; that is a property of how the internet works, not data Rootwork sends
+  deliberately. Their handling of it is governed by their own privacy policies.</p>
+  <p>If you never grant location access and never enable weather features,
+  Rootwork makes no network requests at all.</p>
+
+  <h2>Location</h2>
+  <p>Location is used only to fetch weather and to label entries with a place
+  name. It is requested through the operating system, so it is only available if
+  you grant permission, and you can revoke it at any time in iOS Settings.
+  Coordinates are used at coarse precision — enough to identify local weather
+  conditions, not to track your movements. Revoking permission disables those
+  features and nothing else.</p>
+
+  <h2>Fonts and other assets</h2>
+  <p>All fonts and images are bundled inside the app. Rootwork does not load
+  fonts, scripts, stylesheets, or images from third-party servers, so opening the
+  app does not announce itself to anyone.</p>
+
+  <h2>Research</h2>
+  <p>Rootwork contains code for an optional, opt-in research contribution feature.
+  <strong>It is disabled and has no destination server configured.</strong> It
+  transmits nothing. If that ever changes, it will require your explicit, informed
+  consent first, it will be opt-in rather than opt-out, and this policy will be
+  updated before any data is sent.</p>
+
+  <h2>Analytics, tracking and advertising</h2>
+  <p>There are none. Rootwork contains no analytics SDK, no advertising SDK, no
+  tracking pixels, and no third-party telemetry. Nothing about your use of the app
+  is measured or reported. Rootwork does not track you across apps or websites and
+  does not build a profile of you.</p>
+
+  <h2>Data sharing and selling</h2>
+  <p>Your data is never sold, rented, shared, or disclosed — because it is never
+  collected in the first place. There is nothing on our side to sell or hand
+  over.</p>
+
+  <h2>Exporting and deleting your data</h2>
+  <p>You can export your data at any time from within the app; the export is
+  written to a file you control and shared through the standard iOS share sheet.
+  It goes wherever you send it and nowhere else.</p>
+  <p>You can delete everything from <strong>Settings → Clear all data</strong>,
+  which permanently removes all entries and deletes stored journal photo files
+  from the device. Deleting the app also removes all of its local data. Because
+  nothing is stored on a server, deletion on your device is complete deletion —
+  there is no backup of your entries held by us.</p>
+
+  <h2>Children</h2>
+  <p>Rootwork is not directed at children and does not knowingly collect
+  information from anyone. As no information is collected, no information about
+  children is collected.</p>
+
+  <h2>Medical disclaimer</h2>
+  <p>Rootwork is a personal record-keeping tool. <strong>It is not a medical
+  device, and it does not provide diagnosis, treatment recommendations, or medical
+  advice.</strong> Patterns, trends and summaries it displays are descriptions of
+  what you recorded, not clinical findings. Always consult a qualified healthcare
+  professional about your symptoms and treatment. Never disregard or delay
+  professional medical advice because of something you saw in this app.</p>
+
+  <h2>Beta testing</h2>
+  <p>During TestFlight beta testing, Apple collects information about
+  installations, sessions and crashes, and testers may submit feedback and
+  screenshots through TestFlight. That is handled by Apple under Apple's privacy
+  policy and is separate from Rootwork — your health entries are not part of it.
+  Crash reports may include technical diagnostic data about the app, but not the
+  contents of your entries.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If this policy changes, the "last updated" date above will change with it. If
+  a future version ever involves transmitting personal information, that will be
+  described here clearly and will require your consent.</p>
+
+  <hr>
+  <footer>
+    Rootwork is designed so that trusting us with your health data is
+    unnecessary: the data stays with you.
+  </footer>
+
+</div>
+
+</body>
+</html>
