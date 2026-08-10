@@ -122,6 +122,7 @@ technical diagnostic data about the app, but not the contents of your entries.
 If this policy changes, the "last updated" date above will change with it. If a
 future version ever involves transmitting personal information, that will be
 described here clearly and will require your consent.
+
 ---
 
 *Rootwork is designed so that trusting us with your health data is unnecessary:
