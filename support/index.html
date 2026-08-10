@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Rootwork</title>
+<meta name="description" content="Help and answers for Rootwork — a private symptom log for pain, medication, and chronic conditions.">
+<meta name="color-scheme" content="light dark">
+<style>
+  :root{
+    --paper:#FAFAF8; --paper-alt:#F1F0EA; --card:#FFFFFF;
+    --ink:#26301F; --ink-soft:#5C6B52; --ink-faint:#666E5C;
+    --fern:#3F5E3A; --sage:#7A9A6D; --sage-pale:#DCE6D3;
+    --gold:#A67E2C; --line:#E1E4D8;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#141811; --paper-alt:#191D19; --card:#20261F;
+      --ink:#E7E9E0; --ink-soft:#A9B2A2; --ink-faint:#9CA394;
+      --fern:#8FB283; --sage:#93A68A; --sage-pale:#2C3529;
+      --gold:#C9BB8E; --line:#2E3529;
+    }
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Iowan Old Style','Times New Roman',serif;
+    font-size:17px; line-height:1.72; -webkit-font-smoothing:antialiased;
+  }
+  .sans{font-family:ui-sans-serif,-apple-system,'Helvetica Neue',Arial,sans-serif}
+  .wrap{max-width:44rem; margin:0 auto; padding:3.5rem 1.4rem 5rem}
+
+  header{text-align:center; padding-bottom:2rem; border-bottom:1px solid var(--line); margin-bottom:2.5rem}
+  .sprout{width:26px; height:26px; margin:0 auto .75rem; display:block; color:var(--sage)}
+  h1{font-size:clamp(1.9rem,5vw,2.3rem); line-height:1.15; margin:0 0 .5rem;
+     color:var(--fern); font-weight:600; letter-spacing:-.015em}
+  .meta{margin:0; font-size:.78rem; color:var(--ink-faint); font-weight:600;
+        text-transform:uppercase; letter-spacing:.11em}
+
+  h2{font-size:1.2rem; margin:2.5rem 0 .7rem; color:var(--fern); font-weight:600;
+     font-family:ui-sans-serif,-apple-system,sans-serif; letter-spacing:-.005em}
+  h2::before{content:""; display:block; width:15px; height:1.5px; background:var(--gold);
+             opacity:.9; margin-bottom:.75rem; border-radius:2px}
+  h3{font-size:1.02rem; margin:1.6rem 0 .35rem; color:var(--ink); font-weight:600;
+     font-family:ui-sans-serif,-apple-system,sans-serif}
+  p{margin:0 0 1rem}
+  ul{margin:0 0 1rem; padding-left:1.2rem}
+  li{margin-bottom:.4rem}
+  a{color:var(--fern)}
+  strong{font-weight:700}
+
+  .contact{
+    background:var(--card); border:1px solid var(--line); border-left:3px solid var(--sage);
+    border-radius:14px; padding:1.3rem 1.45rem; margin:0 0 1rem;
+  }
+  .contact p{margin:0}
+  .contact .addr{
+    font-family:ui-monospace,'SF Mono',Menlo,monospace; font-size:1.02rem;
+    font-weight:600; color:var(--ink); display:inline-block; margin-top:.35rem;
+  }
+  .note{
+    background:var(--paper-alt); border:1px solid var(--line); border-radius:12px;
+    padding:1rem 1.15rem; font-size:.93rem; color:var(--ink-soft); margin:0 0 1rem;
+  }
+  footer{margin-top:3.5rem; padding-top:2rem; border-top:1px solid var(--line);
+         font-size:.9rem; color:var(--ink-faint)}
+  footer nav{display:flex; gap:1.25rem; flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <svg class="sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 22V11"/>
+      <path d="M12 11C12 8 10 5.5 6.5 5.5 6.5 9 8.5 11 12 11Z"/>
+      <path d="M12 11c0-3.2 2.2-5.8 5.5-5.8C17.5 8.6 15.4 11 12 11Z"/>
+    </svg>
+    <h1>Support</h1>
+    <p class="meta sans">Rootwork</p>
+  </header>
+
+  <h2 class="sans">Get in touch</h2>
+  <div class="contact">
+    <p>Questions, bugs, or anything that went wrong:</p>
+    <p><a class="addr" href="mailto:Contact.CaspNT@gmail.com">Contact.CaspNT@gmail.com</a></p>
+  </div>
+  <p>Rootwork is made by one person, so replies may take a few days — but every
+  message is read.</p>
+
+  <div class="note sans">
+    <strong>Using the Early Access beta?</strong> The fastest route is the
+    <strong>Send Beta Feedback</strong> option inside the TestFlight app. It attaches
+    your device model, iOS version, and a screenshot automatically, which usually
+    saves a round of questions.
+  </div>
+
+  <h2 class="sans">Common questions</h2>
+
+  <h3>Where is my data stored?</h3>
+  <p>On your device, and only on your device. Rootwork has no accounts and no
+  server. Nothing you record is uploaded anywhere. See the
+  <a href="../privacy/">privacy policy</a> for the specifics.</p>
+
+  <h3>How do I get my data out?</h3>
+  <p>Open <strong>Settings → Export data</strong>. Rootwork writes a file and hands
+  it to the standard iOS share sheet, so you can save it to Files, email it to
+  yourself, or send it to a doctor. The export is yours; it does not pass through us.</p>
+
+  <h3>How do I delete everything?</h3>
+  <p>Open <strong>Settings → Clear all data</strong>. That permanently removes every
+  entry and deletes stored journal photos from the device. Deleting the app removes
+  its data too.</p>
+  <p><strong>There is no backup on our side.</strong> That is the point of the
+  design, but it does mean deletion is final — export first if you might want it
+  back.</p>
+
+  <h3>Will my data survive an app update?</h3>
+  <p>Yes. Updating through TestFlight or the App Store keeps everything. Deleting
+  the app — including "offload" — does not.</p>
+
+  <h3>Does it sync between my devices?</h3>
+  <p>No. Syncing would require sending your health data to a server, which Rootwork
+  does not do. Moving to a new phone means exporting from the old one and importing
+  on the new one.</p>
+
+  <h3>Why does it ask for my location?</h3>
+  <p>Only to name the city on an entry and fetch local weather and barometric
+  pressure, which many people find correlates with their symptoms. It is optional,
+  it is off unless you turn it on, and you can revoke it any time in iOS Settings.
+  Your coordinates go to the weather and place-name services for that lookup and
+  nothing else — never your health entries.</p>
+
+  <h3>Is Rootwork a medical device?</h3>
+  <p><strong>No.</strong> It is a personal record-keeping tool. It does not
+  diagnose, treat, or give medical advice. Anything it shows you describes what you
+  recorded — it is not a clinical finding. Always talk to a qualified healthcare
+  professional about your symptoms and treatment.</p>
+
+  <h3>Which devices are supported?</h3>
+  <p>Early Access is iPhone only, running iOS 15 or later. iPad, Mac, Windows,
+  Linux and Android are planned for later in 2026.</p>
+
+  <h3>I found a bug</h3>
+  <p>Please report it — genuinely useful. If you can, include what you were doing,
+  what you expected, and what happened instead. Screenshots help a lot. In the beta,
+  <strong>Send Beta Feedback</strong> in TestFlight is the easiest way.</p>
+
+  <footer>
+    <nav class="sans">
+      <a href="../">Home</a>
+      <a href="../privacy/">Privacy Policy</a>
+    </nav>
+  </footer>
+
+</div>
+</body>
+</html>
