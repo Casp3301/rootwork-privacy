@@ -156,22 +156,46 @@ h1 em{font-style:italic; color:var(--sage)}
 .s-greet{font-family:Georgia,serif; font-size:1.42rem; line-height:1.05; margin:0 0 .45rem; font-weight:600}
 .s-greet b{color:#C9A24A; font-weight:600}
 .s-sub{font-size:.6rem; line-height:1.5; color:#C4D1B5; margin:0 0 .75rem}
-.s-btns{display:flex; flex-wrap:wrap; gap:.35rem}
-.s-btn{font-size:.58rem; font-weight:600; padding:.36rem .6rem; border-radius:8px; border:1px solid rgba(246,244,232,.3); color:#F6F4E8}
+.s-btns{display:flex; flex-wrap:wrap; gap:.32rem}
+.s-btn{
+  font-size:.57rem; font-weight:600; padding:.38rem .62rem; border-radius:9px;
+  border:1px solid rgba(246,244,232,.3); color:#F6F4E8; display:inline-flex; align-items:center; gap:.28rem;
+}
 .s-btn.solid{background:#F6F4E8; color:#26301F; border-color:transparent}
-.s-rhythm{margin-top:.85rem}
-.s-rhythm p{font-family:Georgia,serif; font-style:italic; font-size:.56rem; color:#C4D1B5; margin:0 0 .3rem}
-.s-bars{display:flex; gap:.28rem; align-items:flex-end; height:26px}
-.s-bars i{flex:1; background:#C4D1B5; border-radius:2px; opacity:.85; display:block}
-.s-card{background:#fff; border:1px solid #E1E4D8; border-radius:14px; padding:.75rem .8rem}
-.s-card .lab{font-size:.5rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#666E5C; margin-bottom:.3rem}
-.s-stat{display:flex; align-items:baseline; gap:.4rem}
-.s-stat b{font-family:Georgia,serif; font-size:1.5rem; color:#26301F; font-weight:600; line-height:1}
-.s-stat span{font-size:.56rem; color:#5C6B52}
-.s-spark{display:flex; gap:.18rem; align-items:flex-end; height:22px; margin-top:.45rem}
-.s-spark i{flex:1; border-radius:1.5px; display:block; background:#7A9A6D}
-.s-row{display:flex; gap:.55rem}
-.s-row>*{flex:1}
+.s-btn svg{width:8px; height:8px}
+
+/* 7-day rhythm: one rounded tile per day, tinted by that day's intensity —
+   gold when it was a hard day, sage when it was an easy one. */
+.s-rhythm{margin-top:.9rem}
+.s-rhythm p{font-family:Georgia,serif; font-style:italic; font-size:.57rem; color:#C4D1B5; margin:0 0 .34rem}
+.s-days{display:flex; gap:.3rem}
+.s-days div{flex:1; text-align:center}
+.s-days i{display:block; height:19px; border-radius:5px}
+.s-days span{display:block; font-size:.42rem; letter-spacing:.08em; color:#C4D1B5; opacity:.75; margin-top:.2rem}
+
+.s-tiles{display:grid; grid-template-columns:1fr 1fr; gap:.5rem}
+.s-card{background:#fff; border:1px solid #E1E4D8; border-radius:13px; padding:.6rem .7rem}
+.s-card .lab{font-size:.46rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:#666E5C; margin-bottom:.16rem}
+.s-card b{font-family:Georgia,serif; font-size:1.4rem; font-weight:600; line-height:1; display:block; color:#26301F}
+.s-card em{font-family:Georgia,serif; font-style:italic; font-size:.5rem; color:#5C6B52; display:block; margin-top:.18rem}
+/* the streak tile picks up a metal finish at each tier — silver at 10 days */
+.s-card.streak{
+  background:linear-gradient(125deg,#D9DDE2 0%,#F2F4F6 28%,#B9C0C8 52%,#EDEFF2 74%,#C7CDD4 100%);
+  border-color:#C2C9D0; position:relative; overflow:hidden;
+}
+.s-card.streak .lab{color:#4A525A}
+.s-card.streak b{color:#2E3439}
+.s-card.streak em{color:#4A525A}
+.s-card.streak .flame{position:absolute; top:.5rem; right:.55rem; width:9px; height:11px; opacity:.55}
+
+/* the insight card — the same "NOTICED" surface the app shows on the home tab */
+.s-notice{
+  background:#fff; border:1px solid #E1E4D8; border-left:2.5px solid #C9A24A;
+  border-radius:13px; padding:.62rem .72rem;
+}
+.s-notice .lab{font-size:.46rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:#666E5C; margin-bottom:.28rem}
+.s-notice p{margin:0; font-size:.53rem; line-height:1.5; color:#26301F; display:flex; gap:.32rem}
+.s-notice svg{width:8px; height:8px; color:#C9A24A; flex:none; margin-top:.12rem}
 @media (max-width:900px){ .device{margin-top:.5rem} }
 
 /* ------------------------------------------------------------- promise -- */
@@ -326,39 +350,47 @@ footer a:hover{border-bottom-color:currentColor}
           </div>
           <div class="s-body">
             <div class="s-plate">
-              <div class="s-eyebrow">Sunday, August 9</div>
+              <div class="s-eyebrow">— Sunday, August 9</div>
               <p class="s-greet">Good evening<b>.</b></p>
-              <p class="s-sub">Your pain has averaged 4.1 out of 10 across the last 7 days.</p>
+              <p class="s-sub">Your pain has averaged <b style="color:#F6F4E8">4.9</b> out of 10 across the last 7 days.</p>
               <div class="s-btns">
                 <span class="s-btn solid">+ Log pain</span>
-                <span class="s-btn">Start a PainFrame</span>
+                <span class="s-btn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                  Start a PainFrame
+                </span>
+                <span class="s-btn">See your patterns ›</span>
               </div>
               <div class="s-rhythm">
                 <p>7-day rhythm</p>
-                <div class="s-bars">
-                  <i style="height:38%"></i><i style="height:62%"></i><i style="height:48%"></i>
-                  <i style="height:80%"></i><i style="height:34%"></i><i style="height:56%"></i><i style="height:44%"></i>
+                <div class="s-days">
+                  <div><i style="background:#D1A62B"></i><span>M</span></div>
+                  <div><i style="background:#D4AC24"></i><span>T</span></div>
+                  <div><i style="background:#9CB07E"></i><span>W</span></div>
+                  <div><i style="background:#BFAE3E"></i><span>T</span></div>
+                  <div><i style="background:#A9B368"></i><span>F</span></div>
+                  <div><i style="background:#AFB55E"></i><span>S</span></div>
+                  <div><i style="background:#C3B44A"></i><span>S</span></div>
                 </div>
               </div>
             </div>
-            <div class="s-row">
-              <div class="s-card">
-                <div class="lab">Average</div>
-                <div class="s-stat"><b>4.1</b><span>of 10</span></div>
-              </div>
-              <div class="s-card">
-                <div class="lab">Streak</div>
-                <div class="s-stat"><b>28</b><span>days</span></div>
+
+            <div class="s-tiles">
+              <div class="s-card"><div class="lab">Lowest</div><b style="color:#7A9A6D">4</b><em>past 7 days</em></div>
+              <div class="s-card"><div class="lab">Highest</div><b style="color:#C9A24A">6</b><em>past 7 days</em></div>
+              <div class="s-card"><div class="lab">Entries</div><b style="color:#3F5E3A">11</b><em>past 7 days</em></div>
+              <div class="s-card streak">
+                <svg class="flame" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c1 4-3 5-3 9a3 3 0 006 0c0-1.5-.6-2.3-1-3 3 1.5 4 3.5 4 6a6 6 0 11-12 0c0-5 5-6 6-12z"/></svg>
+                <div class="lab">Streak</div><b>11</b><em>days logged in person</em>
               </div>
             </div>
-            <div class="s-card">
-              <div class="lab">Last 14 days</div>
-              <div class="s-spark">
-                <i style="height:40%"></i><i style="height:55%"></i><i style="height:35%"></i><i style="height:70%"></i>
-                <i style="height:52%"></i><i style="height:84%"></i><i style="height:60%"></i><i style="height:46%"></i>
-                <i style="height:72%"></i><i style="height:38%"></i><i style="height:58%"></i><i style="height:30%"></i>
-                <i style="height:48%"></i><i style="height:36%"></i>
-              </div>
+
+            <div class="s-notice">
+              <div class="lab">— Noticed</div>
+              <p>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/></svg>
+                Pain has averaged 1.1 points lower on entries after a rest day.
+              </p>
             </div>
           </div>
         </div>
