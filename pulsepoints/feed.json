@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "updated": "2026-09-21",
+  "note": "Rootwork PulsePoints. Plain text only — the app renders these as React children and never as markup, so nothing here can add anything to the app but words.",
+  "stories": [
+    {
+      "id": "northwestern-quadruple-transplant",
+      "date": "2026-09-20",
+      "title": "When Four Organs Arrive from the Sky: How Northwestern Medicine Performed the Impossible",
+      "dek": "A 36-year-old mother from Iowa needed four organs, including lungs that had already been transplanted once. Most programs would have said no. One didn't.",
+      "tag": "Transplant",
+      "by": "Casp",
+      "body": [
+        "The story of humanity is the story of pushing boundaries. And Elizabeth Wehrle's story? It's one that challenges everything we thought was possible in medicine. On March 22, 2026, at Northwestern Memorial Hospital in Chicago, surgeons attempted something that had never been done before in the United States: a quadruple-organ transplant involving retransplanted lungs. Not in some high-tech research facility. Not with unlimited resources and decades of prep. Just a 36-year-old mother from Iowa who was running out of time.",
+        "Elizabeth had received her first double-lung transplant back in 2017. It gave her life back. She became a stay-at-home mom, homeschooled her kid, lived the life she'd fought for. Then cystic fibrosis came knocking again, and her lungs started rejecting. But not in a normal way. She developed something called restrictive allograft syndrome (RAS) — a rare, aggressive, often fatal form of rejection. The kind that makes most transplant centers say no. The kind that makes you put a patient on life support and hope for the best.",
+        "Her lungs weren't her only problem either. The cystic fibrosis was destroying her liver and kidneys too. By the time she got to Northwestern Medicine on a ventilator and ECMO machine — basically the medical equivalent of life support — she needed four organs. Not two. Four.",
+        "Here's the thing about redo lung transplants: the first surgery leaves your chest packed with scar tissue. It distorts everything. When you cut open that chest again, you're operating blind in a minefield of adhesions and damaged tissue. Bleeding everywhere. Vessels where they shouldn't be. Organ injury waiting to happen. Now add a liver and kidney transplant to that equation. Most transplant programs would've declined.",
+        "Dr. Ankit Bharat, the chief of thoracic surgery at Northwestern, looked at this case and saw something others didn't: a solvable problem. Not easy. Not safe by any traditional measure. But solvable.",
+        {
+          "q": "Retransplanting lungs is extraordinarily difficult.",
+          "by": "Dr. Ankit Bharat"
+        },
+        "But that wasn't going to stop him. Not when a mother's life hung in the balance. So Northwestern assembled something remarkable: a coordinated, multidisciplinary machine. Thoracic surgeons. Abdominal surgeons. Anesthesiologists. ICU teams. Perfusion specialists. Nurses. Not separate departments working in sequence. One organism, functioning as a single unit.",
+        "On March 19, Elizabeth was listed for the transplant. Three days later the call came. Four organs were available. Here's where it gets clever.",
+        {
+          "h": "Buying time on a pump"
+        },
+        "Traditional thinking would've been: open the chest, get the lungs in, close up, then move to the abdomen. One long, brutal 20-hour surgery on a critically ill patient. That's not a plan. That's a gamble.",
+        "Instead, Northwestern used advanced machine perfusion technology — basically keeping the liver and kidney alive on a portable pump outside the body while the thoracic team worked on the lungs. No ticking clock. No stress. The lung team could take their time, could be meticulous, could make sure nothing went catastrophically wrong while the organs sat waiting safely on a machine. Once the lungs were in and working, the abdominal organs came next. And when blood flow was restored, they started functioning immediately.",
+        {
+          "q": "The whole operation had to be very closely coordinated, with so many team members and two different teams working in extremely close collaboration to make sure there was no single misstep.",
+          "by": "Dr. Satish Nadig, transplant surgeon"
+        },
+        {
+          "h": "The aftermath"
+        },
+        "Elizabeth was discharged in less than three weeks. She's now walking 3–4 miles a day. Lifting weights. Living.",
+        "\"Before surgery, there was so much tightness in my chest and I couldn't breathe,\" she said. \"Almost immediately after transplant, I felt like a new person.\" She's scheduled to go home to Iowa on July 17 to reunite with her 11-year-old son. The scars on her chest? She's not hiding them.",
+        {
+          "q": "I earned them. They saved my life.",
+          "by": "Elizabeth Wehrle"
+        },
+        {
+          "h": "Why this matters beyond Chicago"
+        },
+        "Here's the thing: Northwestern Medicine just proved something fundamental. They proved that when you assemble the right team, when you use the right technology, when you refuse to accept \"impossible\" as an answer, you can do things that have never been done before. Only seven quadruple-organ transplants have ever been performed in the entire United States. Northwestern is the first to pull off one with retransplanted lungs. Not the biggest hospital. Not the one with the most money necessarily. The one with the vision and the coordination to make it happen.",
+        "That matters. Because somewhere right now, another patient is being told their case is too complicated. Their situation is too rare. Their odds are too long. And now we know: maybe they're not.",
+        "Elizabeth Wehrle got her life back. And in doing that, Northwestern Medicine just changed what's possible for everyone else."
+      ]
+    },
+    {
+      "id": "spacex-xrays-orbit",
+      "date": "2026-09-07",
+      "title": "Space Xrays could be Phenomenal",
+      "dek": "A portable X-ray flew on a three-and-a-half-day mission and came back with images radiologists called good enough to diagnose from. The interesting part isn't space.",
+      "tag": "Imaging",
+      "by": "Casp",
+      "body": [
+        "The story of humanity is the story of the transfer of information. And as humans, we've been going to space for decades. How does space travel further shape our transfer of information, and how does this relate to the medical field? SpaceX, led by polarizing CEO Elon Musk, announced the first images from their X-ray functioning on the International Space Station. For decades, astronauts have explored the stars with two major limitations: first, the natural limit of technology. Second, if something goes wrong health-wise, they have to resort to contacting doctors on Earth — an extremely limiting process.",
+        "Now, SpaceX has made a breakthrough that could change the future of space medicine, and potentially healthcare on Earth. The Texas-based space company has proven that portable X-ray technology can work in the extreme environment of space. The achievement was part of the Fram2 private spaceflight mission, launched on March 31, 2025 aboard a SpaceX Dragon spacecraft. During the 3.5-day orbital mission, four astronauts tested a compact, commercially available digital X-ray system. Despite none of the astronauts being medical professionals — and receiving only four hours of training before using the device in space — the crew successfully captured X-ray images of several body regions, including the hand, forearm, chest, abdomen, and pelvis. They also used the device to image a smartwatch, demonstrating its potential for inspecting equipment in addition to medical applications. It was crucial to test all of these outlets: around 6.8 million bones are fractured every year in the United States, according to Ohio State University.",
+        "After returning to Earth, researchers compared the space-based X-rays with images taken before the mission. Three independent radiologists found that the orbital images had similar overall quality, contrast, and spatial resolution compared with Earth-based scans. While positioning patients was more difficult in microgravity, the images were still considered good enough for medical diagnosis.",
+        "Traditional X-ray machines were not designed for space. They are often large, heavy, power-hungry, and vulnerable to damage during launch. As a frequent flier of local and state-ranked hospitals myself, I can confirm such imaging takes a great deal of time in both taking the actual picture, processing the image, and then presenting it. However, advances in portable digital X-ray technology have created smaller, more durable systems that can be operated with minimal training.",
+        {
+          "h": "The part that isn't about space"
+        },
+        "Believe me when I say that the importance of this technology extends far beyond astronauts. Portable X-ray systems developed for space missions could help improve healthcare in remote areas on Earth. Rural communities, disaster zones, and regions without major hospitals could benefit from lightweight imaging equipment that can quickly provide medical information without requiring patients to travel long distances.",
+        "A technology capable of diagnosing a broken bone on the Moon could also help diagnose injuries in a town with only a couple hundred people, hundreds of miles from the nearest hospital. Beyond hospitals and space missions, miniature X-ray technology could transform the way search-and-rescue teams respond to emergencies. In disasters, wilderness rescues, and remote environments, the difference between life and death can come down to how quickly injuries are identified. Today, rescuers often must make difficult decisions without knowing the full extent of internal injuries, especially when victims are trapped, far from medical facilities, or unable to communicate.",
+        "A portable X-ray system could give rescue teams the ability to look beneath the surface within minutes, identifying fractures, chest injuries, and other life-threatening conditions before a patient ever reaches a hospital. Whether deployed after earthquakes, carried by mountain rescue teams, or used in isolated regions where advanced medical care is hours away, this technology could bring hospital-level diagnostic capabilities directly to the front lines of emergencies. A device originally designed to keep astronauts alive millions of miles from Earth could become a tool that saves lives right here at home. Such advances in imaging may not even require these drastic scenarios to prove merit — roughly one in five Americans lives more than ten miles from their nearest hospital.",
+        "Researchers at SpaceX hope future versions will become even smaller, more rugged, and easier to operate. As humanity prepares for longer journeys into space, innovations created for astronauts may also help solve healthcare challenges here on Earth.",
+        "The future of medicine may not only be found at university research hospitals…",
+        "…It may also be found among the stars."
+      ]
+    }
+  ]
+}

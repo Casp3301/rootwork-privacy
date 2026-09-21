@@ -1,0 +1,11 @@
+Fraunces and Karla are distributed here under the SIL Open Font License,
+Version 1.1. Both files are the Latin subset of the variable font, taken
+from Google Fonts and served from this repository so that the page makes
+no request to any third-party origin.
+
+Fraunces — Copyright (c) 2019 The Fraunces Project Authors
+  https://github.com/undercasetype/Fraunces
+Karla — Copyright (c) 2011 The Karla Project Authors
+  https://github.com/googlefonts/karla
+
+Full licence text: https://openfontlicense.org

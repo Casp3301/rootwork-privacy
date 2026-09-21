@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PulsePoints — Rootwork</title>
+<meta name="description" content="Medicine that's going somewhere. A small reading room from Rootwork, the private pain tracker.">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://casp3301.github.io/rootwork-privacy/pulsepoints/">
+<meta property="og:title" content="PulsePoints — Rootwork">
+<meta property="og:description" content="Medicine that's going somewhere. A small reading room from Rootwork.">
+<meta property="og:type" content="article">
+<link rel="preload" href="../fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/karla-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Shares the main sheet's tokens and type. Kept as its own file so a
+   shared link opens on the article and nothing else. */
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:300 700;font-display:swap;
+  src:url('../fonts/fraunces-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Karla';font-style:normal;font-weight:300 700;font-display:swap;
+  src:url('../fonts/karla-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+:root{
+  --paper:#F7F5EE; --paper-2:#EFEDE3; --card:#FFFDF7;
+  --ink:#20281A; --ink-2:#4E5B45; --ink-3:#5E6A55;
+  --fern:#39603A; --fern-2:#26451F; --sage:#7A9A6D; --sage-pale:#DFE8D4;
+  --gold:#9A7522; --gold-2:#C9A24A; --rule:#D9D6C6; --rule-2:#C6C3B0;
+  --display:'Fraunces',Georgia,serif; --text:'Karla',ui-sans-serif,-apple-system,sans-serif;
+  --mono:ui-monospace,'Cascadia Mono','Roboto Mono',monospace;
+  --gutter:clamp(1.25rem,4vw,3rem);
+}
+/* The page is cream, full stop. It used to flip to a dark palette off the
+   system setting, which meant most people never saw the paper the whole
+   thing is designed on — and a garden picked from the shelf below would
+   then fight a dark mode nobody asked for. Dark is still here; it is
+   Midnight Garden, Meteor Shower or Moonlit Lavender, and you choose it.
+   (No such reservation applies to the app, where a dark page at four in
+   the morning is a kindness rather than a preference.) */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);
+  font-size:clamp(1rem,.96rem + .2vw,1.075rem);line-height:1.68;-webkit-font-smoothing:antialiased;
+  background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.15 0 0 0 0 0.09 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+::selection{background:var(--sage-pale);color:var(--ink)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2);outline-offset:4px}
+.sheet{max-width:78rem;margin:0 auto;padding-inline:var(--gutter)}
+.masthead{border-bottom:1px solid var(--rule);background:var(--paper)}
+.masthead .sheet{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:4rem}
+.wordmark{display:flex;align-items:center;gap:.55rem;text-decoration:none;color:var(--ink)}
+.wordmark svg{width:21px;height:21px;color:var(--fern)}
+.wordmark span{font-family:var(--display);font-size:1.12rem;font-weight:600}
+.mlink{font-size:.85rem;text-decoration:none;color:var(--ink-2);border-bottom:1.5px solid transparent}
+.mlink:hover{color:var(--ink);border-bottom-color:var(--gold)}
+
+.pp{padding-block:clamp(2.5rem,6vw,4.5rem)}
+.pp .sheet{max-width:52rem}
+.pp-back{
+  display:inline-flex; align-items:center; gap:.45rem; text-decoration:none;
+  font-family:var(--mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); margin-bottom:2.25rem;
+}
+.pp-back:hover{color:var(--ink)}
+.pp-meta{
+  display:flex; flex-wrap:wrap; gap:.5rem .9rem; align-items:baseline;
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3); margin-bottom:1rem;
+}
+.pp-tag{color:var(--gold)}
+.pp-title{
+  font-family:var(--display); font-weight:500; font-variation-settings:'opsz' 120;
+  font-size:clamp(2rem,1.2rem + 3vw,3.4rem); line-height:1.06; letter-spacing:-.022em;
+  margin:0 0 1rem; text-wrap:balance;
+}
+.pp-dek{font-size:clamp(1.05rem,1rem + .5vw,1.3rem); line-height:1.55; color:var(--ink-2); max-width:48ch}
+.pp-rule{height:1px; background:var(--rule); margin:2.25rem 0}
+.pp-body p{margin:0 0 1.35rem; max-width:64ch; line-height:1.78}
+.pp-body h3{
+  font-family:var(--display); font-size:1.4rem; font-weight:500; margin:2.5rem 0 .9rem;
+  font-variation-settings:'opsz' 36;
+}
+.pp-quote{
+  margin:2rem 0; padding-left:1.35rem; border-left:2px solid var(--gold); max-width:56ch;
+}
+.pp-quote p{font-family:var(--display); font-style:italic; font-size:1.2rem; line-height:1.5; margin:0}
+.pp-quote cite{
+  display:block; margin-top:.6rem; font-style:normal;
+  font-family:var(--mono); font-size:.64rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+}
+.pp-src{font-size:.86rem; color:var(--ink-3); margin-top:2.5rem}
+.pp-foot{margin-top:3rem; padding-top:2rem; border-top:1px solid var(--rule)}
+.pp-foot p{color:var(--ink-2); max-width:58ch; font-size:.95rem}
+.pp-share{display:flex; flex-wrap:wrap; gap:1.25rem; align-items:center; margin-top:1.25rem}
+.pp-copy{
+  background:none; border:none; padding:0; cursor:pointer; font:inherit; font-weight:600;
+  color:var(--ink); border-bottom:1.5px solid var(--gold); padding-bottom:.15rem;
+}
+.pp-copy:hover{border-bottom-color:currentColor}
+
+/* the index, when no story is named */
+.pp-list{display:grid;gap:0;margin-top:2rem}
+.pp-item{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:clamp(1rem,3vw,2.25rem);
+  padding-block:1.6rem;border-top:1px solid var(--rule);text-decoration:none;color:inherit;align-items:start}
+.pp-item:first-child{border-top:none;padding-top:0}
+.pp-when{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);line-height:1.7}
+.pp-when b{display:block;color:var(--gold);font-weight:600}
+.pp-h{font-family:var(--display);font-size:clamp(1.2rem,1.05rem + .7vw,1.55rem);font-weight:500;line-height:1.2;
+  border-bottom:1.5px solid transparent;display:inline}
+.pp-item:hover .pp-h{border-bottom-color:var(--gold)}
+.pp-d{color:var(--ink-2);margin-top:.6rem;max-width:58ch;font-size:.97rem;display:block}
+@media (max-width:700px){.pp-item,.pp-body{grid-template-columns:1fr}.pp-item{gap:.5rem}}
+@media print{.masthead,.pp-back,.pp-share{display:none!important}body{background:none;font-size:11pt}}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="sheet">
+    <a class="wordmark" href="../">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 22V11"/><path d="M12 11C12 8 10 5.5 6.5 5.5 6.5 9 8.5 11 12 11Z"/><path d="M12 11c0-3.2 2.2-5.8 5.5-5.8C17.5 8.6 15.4 11 12 11Z"/>
+      </svg>
+      <span>Rootwork</span>
+    </a>
+    <a class="mlink" href="../">Back to Rootwork</a>
+  </div>
+</header>
+
+<main class="pp"><div class="sheet" id="pp"></div></main>
+
+<script>
+(function () {
+  "use strict";
+  /* ONE source of truth: feed.json, the same file the app fetches. Adding a
+     story means editing that file and nothing else — this page and the app
+     both pick it up, and neither has a copy to fall out of date. */
+  var STORIES = [];
+  var APP = "https://apps.apple.com/us/app/rootwork-pain-tracker/id6797701797";
+  var MONTHS = ["January","February","March","April","May","June",
+    "July","August","September","October","November","December"];
+
+  /* Everything below is inserted with textContent, never innerHTML, for
+     exactly the reason the app renders these as React children: a story is
+     words, and words should not be able to become markup. */
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function when(iso) {
+    var p = iso.split("-");
+    return MONTHS[+p[1] - 1] + " " + (+p[2]) + ", " + p[0];
+  }
+  function minutes(s) {
+    var w = 0;
+    s.body.forEach(function (b) {
+      var t = typeof b === "string" ? b : (b.h || b.q || "");
+      w += t.split(/\s+/).length;
+    });
+    return Math.max(1, Math.round(w / 220));
+  }
+
+  var host = document.getElementById("pp");
+
+  function renderIndex() {
+    document.title = "PulsePoints — Rootwork";
+    host.textContent = "";
+    host.appendChild(el("p", "pp-meta", "PulsePoints"));
+    host.appendChild(el("h1", "pp-title", "Medicine that's going somewhere."));
+    host.appendChild(el("p", "pp-dek",
+      "A small reading room built into Rootwork, for the days the news about being ill is all bad."));
+    var list = el("div", "pp-list");
+    STORIES.forEach(function (s) {
+      var a = el("a", "pp-item");
+      a.href = "#" + s.id;
+      var p = s.date.split("-");
+      var w = el("span", "pp-when", MONTHS[+p[1] - 1].slice(0, 3) + " " + (+p[2]));
+      w.appendChild(el("b", null, p[0]));
+      a.appendChild(w);
+      var right = el("span");
+      right.appendChild(el("span", "pp-h", s.title));
+      right.appendChild(el("span", "pp-d", s.dek || ""));
+      a.appendChild(right);
+      list.appendChild(a);
+    });
+    host.appendChild(list);
+    footer();
+  }
+
+  function renderStory(s) {
+    document.title = s.title + " — PulsePoints";
+    host.textContent = "";
+    var back = el("a", "pp-back", "\u2190 All stories");
+    back.href = "#";
+    host.appendChild(back);
+
+    var meta = el("p", "pp-meta");
+    if (s.tag) meta.appendChild(el("span", "pp-tag", s.tag));
+    meta.appendChild(el("span", null, when(s.date)));
+    meta.appendChild(el("span", null, minutes(s) + " min read"));
+    if (s.by) meta.appendChild(el("span", null, s.by));
+    host.appendChild(meta);
+
+    host.appendChild(el("h1", "pp-title", s.title));
+    if (s.dek) host.appendChild(el("p", "pp-dek", s.dek));
+    host.appendChild(el("div", "pp-rule"));
+
+    var body = el("div", "pp-body");
+    s.body.forEach(function (b) {
+      if (typeof b === "string") { body.appendChild(el("p", null, b)); return; }
+      if (b.h) { body.appendChild(el("h3", null, b.h)); return; }
+      if (b.q) {
+        var q = el("blockquote", "pp-quote");
+        q.appendChild(el("p", null, b.q));
+        if (b.by) q.appendChild(el("cite", null, b.by));
+        body.appendChild(q);
+      }
+    });
+    host.appendChild(body);
+    if (s.source) host.appendChild(el("p", "pp-src", "Source: " + s.source));
+    footer(s);
+  }
+
+  function footer(s) {
+    var f = el("div", "pp-foot");
+    f.appendChild(el("p", null,
+      "PulsePoints is part of Rootwork, a private log for pain, medication and chronic "
+      + "conditions. Everything you enter stays on your device \u2014 there is no account "
+      + "and no server."));
+    var row = el("div", "pp-share");
+    var get = el("a", "pp-copy", "Get Rootwork on the App Store");
+    get.href = APP; get.rel = "noopener";
+    row.appendChild(get);
+    if (s) {
+      var copy = el("button", "pp-copy", "Copy link to this story");
+      copy.type = "button";
+      copy.addEventListener("click", function () {
+        var url = location.origin + location.pathname + "#" + s.id;
+        var done = function () { copy.textContent = "Link copied"; setTimeout(function () {
+          copy.textContent = "Copy link to this story"; }, 1800); };
+        if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, done);
+        else done();
+      });
+      row.appendChild(copy);
+    }
+    f.appendChild(row);
+    host.appendChild(f);
+  }
+
+  function route() {
+    var id = decodeURIComponent((location.hash || "").replace(/^#/, ""));
+    var s = id && STORIES.filter(function (x) { return x.id === id; })[0];
+    if (s) renderStory(s); else renderIndex();
+    scrollTo(0, 0);
+  }
+  addEventListener("hashchange", route);
+
+  host.appendChild(el("p", "pp-meta", "Loading…"));
+  fetch("./feed.json", { cache: "no-cache" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (d) {
+      STORIES = (d.stories || []).slice().sort(function (x, y) { return x.date < y.date ? 1 : -1; });
+      route();
+    })
+    .catch(function () {
+      host.textContent = "";
+      host.appendChild(el("h1", "pp-title", "PulsePoints"));
+      host.appendChild(el("p", "pp-dek",
+        "Couldn’t load the stories just now. They’re also in the app, which keeps "
+        + "its own copy and reads fine offline."));
+      footer();
+    });
+})();
+</script>
+</body>
+</html>
