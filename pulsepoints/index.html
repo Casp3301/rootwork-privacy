@@ -13,8 +13,7 @@
 <link rel="preload" href="../fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../fonts/karla-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-/* Shares the main sheet's tokens and type. Kept as its own file so a
-   shared link opens on the article and nothing else. */
+
 @font-face{font-family:'Fraunces';font-style:normal;font-weight:300 700;font-display:swap;
   src:url('../fonts/fraunces-latin.woff2') format('woff2');
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
@@ -30,13 +29,7 @@
   --mono:ui-monospace,'Cascadia Mono','Roboto Mono',monospace;
   --gutter:clamp(1.25rem,4vw,3rem);
 }
-/* The page is cream, full stop. It used to flip to a dark palette off the
-   system setting, which meant most people never saw the paper the whole
-   thing is designed on — and a garden picked from the shelf below would
-   then fight a dark mode nobody asked for. Dark is still here; it is
-   Midnight Garden, Meteor Shower or Moonlit Lavender, and you choose it.
-   (No such reservation applies to the app, where a dark page at four in
-   the morning is a kindness rather than a preference.) */
+
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--text);
@@ -98,7 +91,6 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2);outline-o
 }
 .pp-copy:hover{border-bottom-color:currentColor}
 
-/* the index, when no story is named */
 .pp-list{display:grid;gap:0;margin-top:2rem}
 .pp-item{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:clamp(1rem,3vw,2.25rem);
   padding-block:1.6rem;border-top:1px solid var(--rule);text-decoration:none;color:inherit;align-items:start}
@@ -131,17 +123,12 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2);outline-o
 <script>
 (function () {
   "use strict";
-  /* ONE source of truth: feed.json, the same file the app fetches. Adding a
-     story means editing that file and nothing else — this page and the app
-     both pick it up, and neither has a copy to fall out of date. */
+  
   var STORIES = [];
   var APP = "https://apps.apple.com/us/app/rootwork-pain-tracker/id6797701797";
   var MONTHS = ["January","February","March","April","May","June",
     "July","August","September","October","November","December"];
 
-  /* Everything below is inserted with textContent, never innerHTML, for
-     exactly the reason the app renders these as React children: a story is
-     words, and words should not be able to become markup. */
   function el(tag, cls, text) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -169,7 +156,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2);outline-o
     host.appendChild(el("p", "pp-meta", "PulsePoints"));
     host.appendChild(el("h1", "pp-title", "Medicine that's going somewhere."));
     host.appendChild(el("p", "pp-dek",
-      "A small reading room built into Rootwork, for the days the news about being ill is all bad."));
+      "A small blog inside Rootwork with good news from medicine, for when everything else you read about being sick is bad."));
     var list = el("div", "pp-list");
     STORIES.forEach(function (s) {
       var a = el("a", "pp-item");
@@ -226,7 +213,7 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2);outline-o
     var f = el("div", "pp-foot");
     f.appendChild(el("p", null,
       "PulsePoints is part of Rootwork, a private log for pain, medication and chronic "
-      + "conditions. Everything you enter stays on your device \u2014 there is no account "
+      + "conditions. Everything you enter stays on your device. There's no account "
       + "and no server."));
     var row = el("div", "pp-share");
     var get = el("a", "pp-copy", "Get Rootwork on the App Store");
