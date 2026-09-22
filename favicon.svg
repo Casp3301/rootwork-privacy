@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3F5E3A"/>
+      <stop offset="1" stop-color="#2E4629"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <!-- soft paper-noise vignette -->
+  <rect width="512" height="512" rx="112" fill="#000" opacity="0.06"/>
+  <!-- sprout: stem + two leaves, cream & sage -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M256 372 Q258 300 262 236" stroke="#EAF0DC" stroke-width="16"/>
+    <path d="M262 262 C 198 264 138 224 112 158 C 104 138 114 116 138 114 C 200 104 252 146 268 210"
+          fill="#7A9A6D" fill-opacity="0.55" stroke="#DCE6D3" stroke-width="15"/>
+    <path d="M262 232 C 322 232 380 196 404 134 C 412 116 402 96 380 96 C 322 90 274 128 260 188"
+          fill="#7A9A6D" fill-opacity="0.55" stroke="#DCE6D3" stroke-width="15"/>
+  </g>
+  <!-- gold seed -->
+  <circle cx="256" cy="392" r="12" fill="#D9B865"/>
+</svg>
