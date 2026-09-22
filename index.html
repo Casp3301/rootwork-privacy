@@ -225,19 +225,6 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-
   border:1px solid var(--rule-2); background:var(--card); overflow:hidden;
   box-shadow:0 1px 0 rgba(0,0,0,.02), 0 30px 60px -45px rgba(20,30,15,.45);
 }
-.plate-bar{
-  display:flex; align-items:center; gap:.6rem; padding:.6rem .95rem;
-  border-bottom:1px solid var(--rule); background:var(--paper-2);
-}
-.plate-bar b{font-family:var(--display); font-size:.92rem; font-weight:600; letter-spacing:-.01em}
-.plate-app{
-  display:block; width:100%; height:clamp(420px,52vh,560px); border:none;
-  background:var(--card); opacity:0; transition:opacity .45s ease;
-}
-.plate-app.ready{opacity:1}
-.plate-noscript{padding:2rem; font-size:.95rem; color:var(--ink-2)}
-.plate-cap a{color:inherit; text-decoration:none; border-bottom:1px solid var(--gold)}
-.plate-cap a:hover{border-bottom-color:currentColor}
 .plate-cap{
   display:flex; gap:1rem; justify-content:space-between; flex-wrap:wrap;
   margin-top:.85rem; font-family:var(--mono); font-size:.66rem; letter-spacing:.14em;
@@ -489,15 +476,6 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 }
 
 
-/* ---------------------------------------------------------------- live -- */
-/* The hero plate holds the real app in an iframe. Only the chrome around
-   it lives here; everything inside the frame is the app's own stylesheet. */
-.try-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);flex:none}
-.try-live{
-  margin-left:auto;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-3);
-}
-
 @media print{
   .masthead,.skip,.vine,.plot,.cta-row{display:none!important}
   .statement,.sanctuary{background:none!important; color:#000!important}
@@ -570,25 +548,41 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
       <!-- the plate ------------------------------------------------------- -->
       <figure class="plate up" style="margin-inline:0">
         <div class="plate-frame">
-          <div class="plate-bar">
-            <span class="try-dot"></span><b>Rootwork</b>
-            <span class="try-live">running here, not a screenshot</span>
+          <div class="ui">
+            <div class="ui-top">
+              <span class="ui-dot"></span><b>Rootwork</b><span>Home</span>
+            </div>
+            <div class="ui-body">
+              <div class="ui-greet">
+                <p class="k">Sunday, 20 September</p>
+                <p class="greeting">Good evening.</p>
+                <p>Your pain has averaged <b>4.9</b> out of 10 across the last seven days.</p>
+                <div class="ui-week">
+                  <div><i style="background:#C2792F"></i><span>M</span></div>
+                  <div><i style="background:#C2792F;height:21px"></i><span>T</span></div>
+                  <div><i style="background:#7A9A6D;height:15px"></i><span>W</span></div>
+                  <div><i style="background:#B9A23E;height:19px"></i><span>T</span></div>
+                  <div><i style="background:#B9A23E;height:22px"></i><span>F</span></div>
+                  <div><i style="background:#7A9A6D;height:14px"></i><span>S</span></div>
+                  <div><i style="background:#B9A23E;height:18px"></i><span>S</span></div>
+                </div>
+              </div>
+              <div class="ui-tiles">
+                <div class="ui-tile"><span class="k">Lowest</span><b>4</b><em>past 7 days</em></div>
+                <div class="ui-tile"><span class="k">Highest</span><b>6</b><em>past 7 days</em></div>
+                <div class="ui-tile"><span class="k">Entries</span><b>11</b><em>past 7 days</em></div>
+                <div class="ui-tile"><span class="k">Streak</span><b>11</b><em>days logged</em></div>
+              </div>
+              <div class="ui-note">
+                <span class="k">Noticed</span>
+                <p>Pain has averaged 1.1 points lower on entries logged after a rest day.</p>
+              </div>
+            </div>
           </div>
-          <!-- src is set after the page has painted; see the script at the
-               foot. Loading a two-megabyte app bundle in the critical path
-               of a landing page is how you make a fast page slow. -->
-          <iframe class="plate-app" data-src="./demo/index.html?demo=1"
-            title="Rootwork, running with sample data"
-            referrerpolicy="no-referrer"></iframe>
-          <noscript>
-            <p class="plate-noscript">
-              The live app needs JavaScript. <a href="./demo/index.html?demo=1">Open it directly</a>.
-            </p>
-          </noscript>
         </div>
         <figcaption class="plate-cap">
-          <span>Plate I &mdash; the Home tab, with sample data</span>
-          <span><a href="./demo/index.html?demo=1" target="_blank" rel="noopener">Open it full size &#8594;</a></span>
+          <span>Plate I &mdash; the Home tab, Garden</span>
+          <span>Rebuilt in HTML, not a screenshot</span>
         </figcaption>
       </figure>
     </div>
@@ -1340,23 +1334,6 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
     else { raf = 0; ctx.clearRect(0, 0, w, h); }
   }
 
-
-  /* ------------------------------------------------------- the plate --
-     The hero shows the real app rather than a rebuild of it, which means
-     a two-megabyte bundle would otherwise sit in the critical path of the
-     first screen anybody sees. So the frame is empty until the page has
-     finished its own load, and fades in when the app is up. */
-  (function () {
-    var f = document.querySelector(".plate-app");
-    if (!f || !f.dataset.src) return;
-    var go = function () {
-      f.addEventListener("load", function () { f.classList.add("ready"); }, { once: true });
-      f.src = f.dataset.src;
-    };
-    var idle = window.requestIdleCallback || function (fn) { return setTimeout(fn, 260); };
-    if (document.readyState === "complete") idle(go);
-    else window.addEventListener("load", function () { idle(go); });
-  })();
 
   /* ----------------------------------------------------- the story list */
   /* the same feed.json the app fetches — see pulsepoints/ */
