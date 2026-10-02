@@ -1,8 +1,37 @@
 {
   "version": 1,
-  "updated": "2026-09-21",
+  "updated": "2026-10-01",
   "note": "Rootwork PulsePoints. Plain text only — the app renders these as React children and never as markup, so nothing here can add anything to the app but words.",
   "stories": [
+    {
+      "id": "lungvax-phase-1",
+      "date": "2026-10-01",
+      "title": "LungVax Is in Phase 1. Here's What That Means",
+      "dek": "A 40-person trial in the UK is trying to teach the immune system to spot lung cancer years before it exists. The interesting part isn't the vaccine.",
+      "tag": "Cancer",
+      "by": "Casp",
+      "body": [
+        "The story of medicine is the story of getting information to the right place before it's too late. For most of history, that place was a doctor's office, and \"too late\" arrived long before the appointment did. How does a vaccine fit into that story, and what happens when the information being transferred isn't a diagnosis, but a warning?",
+        "As someone who's been following LungVax for an extremely long time (and someone who was extremely disappointed after not being eligible because I'm not a scary Brit), seeing LungVax finally come into existence has been an extremely heartwarming and exciting experience.",
+        {
+          "h": "So what is LungVax"
+        },
+        "Researchers at the University of Oxford, UCL, and the Francis Crick Institute have launched a first-in-human trial of LungVax, an experimental vaccine built on the same chimpanzee adenovirus platform behind Oxford's COVID-19 shot. The difference is the payload. Instead of a viral protein, it carries the genetic instructions for 22 recurring lung cancer mutations, plus two cancer-associated antigens called NY-ESO-1 and MUC1. The idea is to show T cells what early cancer looks like, so they can destroy abnormal cells while there are still only a few thousand of them rather than a hundred billion.",
+        "The Phase I trial will enroll just 40 people in two groups. The first is 20 patients who recently had early-stage lung cancer surgically removed. The second is 20 people from the NHS Lung Cancer Screening Programme who are at elevated risk but currently show no cancer. Each participant gets four injections over eighteen months and is followed for two years. The goals are modest and honest: is it safe, and does it produce a strong, broad T-cell response?",
+        {
+          "h": "The number you'll see everywhere"
+        },
+        "Believe me when I say that the headline claim needs an asterisk. You may have read that LungVax could cover up to 90% of lung cancers. That figure comes from computer modeling of how many cancers contain at least one of the vaccine's targets. It is coverage, not effectiveness. No human data yet shows LungVax prevents anything, and a 40-person study can't. Even the questions that matter most, like whether T-cell protection lasts decades and whether a vaccine pushes tumors to evolve around its targets, are years from an answer.",
+        "Cancer is a harder target than a virus. HPV vaccination blocks an outside invader. LungVax is asking the immune system to recognize our own cells going wrong, which is a much taller order.",
+        {
+          "h": "The part that isn't about one vaccine"
+        },
+        "The importance of this trial extends well beyond lung cancer. Its official title describes a \"precision-prevention\" platform for \"other cancers\" too. If researchers can identify mutations that appear early across thousands of tumors, they could build shared vaccines for high-risk groups before disease takes hold. That would shift oncology from detect-and-treat toward intercept-and-prevent.",
+        "It's part of a broader run of good news. In September alone, the FDA approved the first treatment for MCT8 deficiency, a once-weekly insulin for type 2 diabetes, a muscle-focused therapy for spinal muscular atrophy, and a new oral drug for fibrodysplasia ossificans progressiva, a disease where soft tissue turns to bone. An FDA advisory panel also backed Galleri, a blood test that looks for signals from many cancers at once, though its ability to catch the earliest stages is still limited. A late-stage macular degeneration trial from Kodiak Sciences also hit its goals.",
+        "Almost none of these are \"another drug in an existing class.\" Researchers worked out how a body fails, then engineered around it. The MCT8 drug bypasses a broken transporter rather than repairing it. The SMA drug targets muscle instead of the gene.",
+        "A vaccine that trains your body to catch cancer before it forms is still far from certain, and it may take a decade to know. But for the first time in a long time, the question isn't whether we can find disease sooner. It's whether we can stop it from ever arriving."
+      ]
+    },
     {
       "id": "northwestern-quadruple-transplant",
       "date": "2026-09-20",
