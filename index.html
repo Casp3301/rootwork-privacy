@@ -427,6 +427,88 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
   .band{padding-block:1.2rem; break-inside:avoid}
   body{font-size:10.5pt; background:none}
 }
+/* ── the soundtrack ─────────────────────────────────────────────────────
+   The band takes its colours from the cover: night at the top, the dawn
+   coming up behind the hills at the bottom. */
+.ost{
+  position:relative; overflow:hidden; color:#F3EEDD; border-top:none;
+  background:
+    radial-gradient(70% 45% at 30% 88%, rgba(232,158,92,.30), transparent 70%),
+    linear-gradient(180deg,#0B1428 0%,#15213A 38%,#3B3A52 66%,#7A5554 84%,#1E2618 100%);
+}
+.ost .sheet{position:relative; z-index:1}
+.ost h2,.ost h3{color:#F6F1E2}
+.ost .lede{color:#C9C6D6}
+.ost .band-no{color:#AFAEC4; border-top-color:#E0B66A}
+.ost .band-no b{color:#F6F1E2}
+.ost-flies{position:absolute; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
+
+.ost-stage{
+  margin-top:clamp(2.5rem,6vw,4.5rem);
+  display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(2rem,6vw,5rem); align-items:center;
+}
+@media (max-width:860px){ .ost-stage{grid-template-columns:1fr} }
+
+/* the deck: the sleeve, and the record that slides out from behind it */
+.ost-deck{position:relative; width:min(100%,30rem); aspect-ratio:1; perspective:1100px; margin-right:12%}
+.ost-tilt{position:absolute; inset:0; transform-style:preserve-3d; will-change:transform}
+.ost-glow{
+  position:absolute; inset:-12%; border-radius:50%; z-index:-1; pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,214,150,.42),rgba(255,180,110,.12) 55%,transparent);
+  filter:blur(18px); opacity:.55; transform:scale(var(--pulse,1)); transition:opacity .6s ease;
+}
+.ost-deck.playing .ost-glow{opacity:1}
+.ost-record{
+  position:absolute; inset:4%; border-radius:50%; z-index:0;
+  background:
+    radial-gradient(circle at 50% 50%, #E9C77E 0 14%, #1a1a1a 14.4% 15.4%, transparent 15.6%),
+    repeating-radial-gradient(circle at 50% 50%, #151515 0 1.2px, #222 1.6px 2.6px),
+    #111;
+  box-shadow:0 18px 50px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.06);
+  transform:translateX(0); transition:transform .9s cubic-bezier(.22,1,.36,1);
+}
+.ost-record::after{
+  content:""; position:absolute; inset:0; border-radius:50%;
+  background:conic-gradient(from 30deg, transparent 0 10%, rgba(255,255,255,.10) 14%, transparent 22% 58%, rgba(255,255,255,.07) 63%, transparent 70%);
+}
+.ost-record i{position:absolute; left:50%; top:50%; width:2.2%; aspect-ratio:1; border-radius:50%; background:#0B1428; transform:translate(-50%,-50%)}
+.ost-spin{position:absolute; inset:0; border-radius:50%; animation:ost-spin 2.2s linear infinite; animation-play-state:paused}
+.ost-deck.playing .ost-record{transform:translateX(34%)}
+.ost-deck.playing .ost-spin{animation-play-state:running}
+@keyframes ost-spin{to{transform:rotate(360deg)}}
+
+.ost-cover{
+  all:unset; box-sizing:border-box; position:absolute; inset:0; z-index:1; cursor:pointer; border-radius:3px;
+  transform:translateZ(30px);
+  box-shadow:0 30px 60px -18px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.08);
+}
+.ost-cover img{display:block; width:100%; height:100%; object-fit:cover; border-radius:3px}
+.ost-sheen{
+  position:absolute; inset:0; border-radius:3px; pointer-events:none; mix-blend-mode:soft-light;
+  background:radial-gradient(60% 60% at var(--sx,30%) var(--sy,20%), rgba(255,255,255,.55), transparent 65%);
+}
+.ost-cover:focus-visible{outline:2.5px solid #E0B66A; outline-offset:6px}
+
+/* the sleeve notes */
+.ost-k{font-family:var(--mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:#E0B66A; margin:0}
+.ost-meta h3{font-family:var(--display); font-weight:400; font-style:italic; font-size:clamp(2.4rem,1.6rem + 3vw,4rem); line-height:1; margin:.6rem 0 .35rem}
+.ost-by{font-family:var(--display); font-style:italic; color:#C9C6D6; font-size:1.15rem; margin:0}
+.ost-bar{margin-top:1.8rem; position:relative; height:2px; background:rgba(243,238,221,.18)}
+.ost-bar i{position:absolute; inset:0 auto 0 0; width:0; background:linear-gradient(90deg,#E0B66A,#F6E3B4)}
+.ost-bar input{position:absolute; inset:-10px 0; width:100%; margin:0; opacity:0; cursor:pointer}
+.ost-time{display:flex; justify-content:space-between; font-family:var(--mono); font-size:.74rem; color:#AFAEC4; margin:.55rem 0 0}
+.ost-tracks{list-style:none; padding:0; margin:1.8rem 0 0; counter-reset:t; border-top:1px solid rgba(243,238,221,.14)}
+.ost-tracks li{
+  counter-increment:t; display:grid; grid-template-columns:2.2rem 1fr auto; align-items:baseline;
+  padding:.62rem 0; border-bottom:1px solid rgba(243,238,221,.1); color:#E6E1D2;
+}
+.ost-tracks li::before{content:counter(t,decimal-leading-zero); font-family:var(--mono); font-size:.72rem; color:#8E8DA6}
+.ost-tracks em{font-family:var(--display); font-style:italic; color:#AFAEC4; font-size:.95rem}
+.ost-note{margin:1.2rem 0 0; color:#AFAEC4; font-size:.92rem; max-width:40ch}
+.ost-eq{display:inline-flex; gap:3px; align-items:flex-end; height:12px; margin-left:.6rem; vertical-align:-1px}
+.ost-eq b{width:3px; height:100%; background:#E0B66A; transform-origin:bottom; transform:scaleY(.25)}
+@media print{ .ost{background:none!important; color:#000!important} .ost-flies,.ost-deck{display:none} }
 </style>
 </head>
 <body>
@@ -444,9 +526,11 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
       <a href="#record">What it does</a>
       <a href="#impacts">Impacts</a>
       <a href="#sanctuary">Sanctuary</a>
+      <a href="#soundtrack">Soundtrack</a>
       <a href="#gardens">Gardens</a>
       <a href="#pulsepoints">PulsePoints</a>
       <a href="#cost">Cost</a>
+      <a href="./download/">Download</a>
       <a href="./privacy/">Privacy</a>
     </nav>
   </div>
@@ -457,7 +541,7 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
   <div class="sheet">
     <span class="band-no">No. 00 <b>Rootwork</b></span>
     <div>
-      <p class="hero-tag"><i></i> On the App Store now · Full release 21 October 2026</p>
+      <p class="hero-tag"><i></i> On iPhone and Windows now · Full release 21 October 2026</p>
       <h1>A quiet place<br>to track <em>pain</em>.</h1>
 
       <div class="hero-rule"></div>
@@ -467,22 +551,20 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
           A personal log for pain, medication and chronic conditions, built for the days when filling in a form is the last thing you want to do.
         </p>
         <p class="hero-fine">
-          <b>It never phones home.</b> No account, no server, no analytics. What you log stays on your phone. It's free everywhere and there's no paid version.
+          <b>It never phones home.</b> No account, no server, no analytics. What you log stays on your device. It's free everywhere and there's no paid version.
         </p>
       </div>
 
       <div class="cta-row">
-        <a class="cta" href="https://apps.apple.com/us/app/rootwork-pain-tracker/id6797701797" rel="noopener">
-          <svg class="cta-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.2-.9-2.2-3.2zM14.2 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2z"/>
-          </svg>
-          Download on the App Store
+        <a class="cta" href="./download/">
+          <svg class="cta-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+          Download
         </a>
         <a class="link" href="#record">See what it does <span class="arr">&#8594;</span></a>
       </div>
       <p class="hero-badge">
         <span class="hero-badge-dot"></span>
-        iPhone, Early Access. Everything else on 21 October 2026.
+        iPhone and Windows, early access. Mac, Linux and Android on 21 October 2026.
       </p>
 
             <figure class="plate up" style="margin-inline:0">
@@ -773,9 +855,58 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
   </div>
 </section>
 
+<section class="band ost" id="soundtrack">
+  <canvas class="ost-flies" aria-hidden="true"></canvas>
+  <div class="sheet">
+    <span class="band-no">No. 05 <b>Soundtrack</b></span>
+    <div>
+      <h2 class="up">The Sanctuary has its own music.</h2>
+      <p class="lede intro up" style="max-width:48ch">
+        Written for the clearing by Clowntown and Casp. There's a theme for the garden, another for the barn and one for when it rains, and the game moves between them without the song ever stopping.
+      </p>
+
+      <div class="ost-stage">
+        <div class="ost-deck" id="ostDeck">
+          <div class="ost-glow"></div>
+          <div class="ost-tilt">
+            <div class="ost-record" aria-hidden="true"><div class="ost-spin"><i></i></div></div>
+            <button class="ost-cover" type="button" aria-pressed="false" aria-label="Play a preview of the Sanctuary soundtrack">
+              <img src="./soundtrack/cover-1400.webp" srcset="./soundtrack/cover-700.webp 700w, ./soundtrack/cover-1400.webp 1400w"
+                   sizes="(max-width:860px) 90vw, 30rem" width="1400" height="1400" loading="lazy" decoding="async"
+                   alt="The cover: a glowing seedling drawn in light, rising over hills at dawn.">
+              <span class="ost-sheen"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="ost-meta">
+          <p class="ost-k">Rootwork · Original Soundtrack</p>
+          <h3>Sanctuary</h3>
+          <p class="ost-by">Clowntown &amp; Casp<span class="ost-eq" aria-hidden="true"><b></b><b></b><b></b></span></p>
+          <div class="ost-bar"><i></i><input type="range" min="0" max="1000" value="0" step="1" aria-label="Position in the preview"></div>
+          <p class="ost-time"><span class="ost-now">0:00</span><span class="ost-len">1:32</span></p>
+          <ol class="ost-tracks">
+            <li>Main Theme <em>Clowntown</em></li>
+            <li>Shop Theme <em>Clowntown</em></li>
+            <li>Rain Theme <em>Clowntown</em></li>
+            <li>Menu Theme <em>Clowntown</em></li>
+            <li>Technological Advances <em>Casp</em></li>
+            <li>Groundwork <em>Casp</em></li>
+          </ol>
+          <p class="ost-note">Press the cover to hear a minute and a half of it. Nothing plays until you do.</p>
+        </div>
+      </div>
+      <audio class="ost-audio" preload="none" data-length="91.9">
+        <source src="./soundtrack/sanctuary-ost.opus" type="audio/ogg; codecs=opus">
+        <source src="./soundtrack/sanctuary-ost.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="gardens">
   <div class="sheet">
-    <span class="band-no">No. 05 <b>Gardens</b></span>
+    <span class="band-no">No. 06 <b>Gardens</b></span>
     <div>
       <h2 class="up">An app you can stand to look at on a bad day.</h2>
       <p class="body intro up">
@@ -840,7 +971,7 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 
 <section class="band" id="pulsepoints">
   <div class="sheet">
-    <span class="band-no">No. 06 <b>PulsePoints</b></span>
+    <span class="band-no">No. 07 <b>PulsePoints</b></span>
     <div>
       <h2 class="up">Medicine that's going somewhere.</h2>
       <p class="body intro up">
@@ -858,7 +989,7 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 
 <section class="band impacts" id="cost">
   <div class="sheet">
-    <span class="band-no">No. 07 <b>What it costs</b></span>
+    <span class="band-no">No. 08 <b>What it costs</b></span>
     <div>
       <h2 class="up">It's free. There's no paid version.</h2>
       <p class="body intro up">
@@ -889,7 +1020,7 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 
 <section class="band" id="when">
   <div class="sheet">
-    <span class="band-no">No. 08 <b>When</b></span>
+    <span class="band-no">No. 09 <b>When</b></span>
     <div>
       <h2 class="up">Early Access now. Everywhere on 21 October.</h2>
       <p class="body intro up">
@@ -898,15 +1029,15 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 
       <div class="when up">
         <div class="when-step now">
-          <p class="when-when">Running now · iPhone</p>
+          <p class="when-when">Running now · iPhone and Windows</p>
           <h3>Early Access</h3>
           <p>
-            It's on the App Store now as early access. Things are still getting fixed, and feedback comes straight to me.
+            It's out now as early access, on iPhone and Windows. Things are still getting fixed, and feedback comes straight to me.
           </p>
           <p style="margin-top:.7rem">
-            <a class="link" href="https://apps.apple.com/us/app/rootwork-pain-tracker/id6797701797" rel="noopener">Rootwork on the App Store <span class="arr">&#8594;</span></a>
+            <a class="link" href="./download/">All downloads <span class="arr">&#8594;</span></a>
           </p>
-          <ul class="plats"><li>iPhone</li></ul>
+          <ul class="plats"><li>iPhone</li><li>Windows</li></ul>
         </div>
         <div class="when-step">
           <p class="when-when">21 October 2026</p>
@@ -917,7 +1048,7 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
       </div>
 
       <div class="cta-row">
-        <a class="cta" href="https://apps.apple.com/us/app/rootwork-pain-tracker/id6797701797" rel="noopener">Get it on the App Store</a>
+        <a class="cta" href="./download/"><svg class="cta-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg> Download Rootwork</a>
         <a class="link" href="./privacy/">Read the privacy policy <span class="arr">&#8594;</span></a>
       </div>
     </div>
@@ -926,7 +1057,7 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 
 <section class="band impacts">
   <div class="sheet">
-    <span class="band-no">No. 09 <b>Questions</b></span>
+    <span class="band-no">No. 10 <b>Questions</b></span>
     <div>
       <h2 class="up">A few things people ask.</h2>
       <dl class="faq up">
@@ -961,7 +1092,7 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 
 <section class="band">
   <div class="sheet">
-    <span class="band-no">No. 10 <b>Small print</b></span>
+    <span class="band-no">No. 11 <b>Small print</b></span>
     <div class="fine">
       <p>
         <b>Rootwork is a personal record-keeping tool, not a medical device.</b>
@@ -984,10 +1115,12 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
         <a href="#record">What it does</a>
         <a href="#impacts">Impacts</a>
         <a href="#sanctuary">Sanctuary</a>
+        <a href="#soundtrack">Soundtrack</a>
         <a href="#gardens">Gardens</a>
         <a href="#pulsepoints">PulsePoints</a>
         <a href="#cost">Cost</a>
         <a href="#when">When</a>
+        <a href="./download/">Download</a>
         <a href="./support/">Support</a>
         <a href="./privacy/">Privacy Policy</a>
       </nav>
@@ -1212,5 +1345,6 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 })();
 </script>
 
+<script src="./soundtrack/ost.js" defer></script>
 </body>
 </html>

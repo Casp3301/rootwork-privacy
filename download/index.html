@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Download Rootwork</title>
+<meta name="description" content="Download Rootwork for Windows or iPhone. A private log for pain, medication and chronic conditions. Free, no account.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F7F5EE">
+<link rel="canonical" href="https://casp3301.github.io/rootwork-privacy/download/">
+<link rel="preload" href="../fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/karla-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Fraunces'; font-style:normal; font-weight:300 700; font-display:swap; src:url('../fonts/fraunces-latin.woff2') format('woff2')}
+@font-face{font-family:'Karla'; font-style:normal; font-weight:300 700; font-display:swap; src:url('../fonts/karla-latin.woff2') format('woff2')}
+:root{
+  --paper:#F7F5EE; --paper-2:#EFEDE3; --card:#FFFDF7;
+  --ink:#20281A; --ink-2:#4E5B45; --ink-3:#5E6A55;
+  --fern:#39603A; --fern-2:#26451F; --sage:#7A9A6D; --sage-pale:#DFE8D4;
+  --gold:#9A7522; --gold-2:#C9A24A; --rule:#D9D6C6; --rule-2:#C6C3B0;
+  --plate:#18200F; --plate-2:#0D1208; --plate-ink:#F5F2E4; --plate-2ink:#B7C2A6;
+  --display:'Fraunces',Georgia,serif; --text:'Karla',ui-sans-serif,-apple-system,'Segoe UI',sans-serif;
+  --mono:ui-monospace,'SFMono-Regular','Cascadia Mono',monospace; --gutter:clamp(1.25rem,4vw,3rem);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--text); font-size:clamp(1rem,.96rem + .2vw,1.075rem); line-height:1.65; -webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display); font-weight:500; margin:0; letter-spacing:-.02em; text-wrap:balance}
+p{margin:0; text-wrap:pretty}
+.sheet{max-width:68rem; margin:0 auto; padding-inline:var(--gutter)}
+.mono{font-family:var(--mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3)}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-offset:4px}
+
+.top{display:flex; align-items:center; justify-content:space-between; padding-block:1.4rem; border-bottom:1px solid var(--rule)}
+.wordmark{display:inline-flex; align-items:center; gap:.55rem; text-decoration:none; font-family:var(--display); font-size:1.25rem; color:var(--fern-2)}
+.wordmark svg{width:22px; height:22px}
+.back{font-weight:600; text-decoration:none; border-bottom:1.5px solid var(--gold); padding-bottom:.1rem}
+
+.hero{padding-block:clamp(3rem,8vw,5.5rem) clamp(2rem,5vw,3rem)}
+.hero h1{font-size:clamp(2.6rem,1.4rem + 5vw,4.8rem); line-height:1; margin-top:.9rem}
+.hero h1 em{color:var(--fern); font-style:italic}
+.hero p.lede{margin-top:1.2rem; color:var(--ink-2); font-size:clamp(1.08rem,1rem + .5vw,1.3rem); max-width:46ch}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr)); gap:1.1rem}
+.card{
+  position:relative; background:var(--card); border:1px solid var(--rule); border-radius:3px;
+  padding:1.6rem 1.5rem 1.5rem; display:flex; flex-direction:column; gap:.7rem;
+  transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.card.yours{border-color:var(--gold-2); box-shadow:0 18px 40px -26px rgba(32,40,26,.5)}
+.card .flag{display:none; position:absolute; top:-.7rem; left:1.2rem; background:var(--gold-2); color:#211A08; font-family:var(--mono); font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; padding:.2rem .55rem; border-radius:2px}
+.card.yours .flag{display:block}
+.card h2{font-size:1.55rem}
+.card .what{color:var(--ink-2); font-size:.98rem; flex:1}
+.card .spec{font-family:var(--mono); font-size:.72rem; color:var(--ink-3)}
+.plat{width:30px; height:30px; color:var(--fern)}
+.get{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem; margin-top:.4rem;
+  text-decoration:none; font-weight:600; padding:.85rem 1.2rem; border-radius:2px;
+  background:var(--fern-2); color:var(--paper); transition:background .18s ease, transform .12s ease;
+}
+.get:hover{background:var(--fern); transform:translateY(-1px)}
+.get svg{width:17px; height:17px}
+.card.later{background:transparent; border-style:dashed}
+.card.later .get{background:transparent; color:var(--ink-3); border:1px solid var(--rule-2); pointer-events:none}
+
+.notes{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,22rem),1fr)); gap:clamp(1.5rem,4vw,3rem); padding-block:clamp(3rem,7vw,4.5rem); border-top:1px solid var(--rule); margin-top:clamp(3rem,7vw,4.5rem)}
+.notes h3{font-size:1.35rem}
+.notes p,.notes li{color:var(--ink-2)}
+.notes p{margin-top:.6rem}
+.steps{margin:.9rem 0 0; padding:0; list-style:none; counter-reset:s}
+.steps li{counter-increment:s; display:grid; grid-template-columns:1.8rem 1fr; padding:.45rem 0; border-top:1px solid var(--rule)}
+.steps li::before{content:counter(s); font-family:var(--mono); font-size:.75rem; color:var(--gold); padding-top:.2rem}
+.shot{margin-top:1rem; background:#fff; border:1px solid var(--rule); border-radius:3px; padding:1rem 1.1rem; font-family:'Segoe UI',system-ui,sans-serif; font-size:.85rem; color:#1b1b1b}
+.shot .bar{background:#0067C0; color:#fff; margin:-1rem -1.1rem .9rem; padding:.9rem 1.1rem; border-radius:3px 3px 0 0}
+.shot .bar b{display:block; font-size:1.05rem; font-weight:600}
+.shot u{color:#0067C0; text-decoration:underline}
+.shot .btns{display:flex; justify-content:flex-end; gap:.5rem; margin-top:.9rem}
+.shot .btns span{border:1px solid #c8c8c8; padding:.3rem .9rem; border-radius:3px}
+.shot .btns span.hl{outline:2px solid var(--gold-2); outline-offset:2px}
+code,.hash{font-family:var(--mono); font-size:.78rem; word-break:break-all}
+details{margin-top:.8rem}
+summary{cursor:pointer; font-weight:600}
+.hash{display:block; margin-top:.4rem; color:var(--ink-3)}
+footer{border-top:1px solid var(--rule); padding-block:2rem 3rem; color:var(--ink-3); font-size:.92rem}
+footer .sheet{display:flex; flex-wrap:wrap; gap:1rem 2rem; justify-content:space-between}
+footer a{text-decoration:none; border-bottom:1px solid var(--rule-2)}
+</style>
+</head>
+<body>
+<header class="sheet top">
+  <a class="wordmark" href="../">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 22V11"/><path d="M12 11C12 8 10 5.5 6.5 5.5 6.5 9 8.5 11 12 11Z"/><path d="M12 11c0-3.2 2.2-5.8 5.5-5.8C17.5 8.6 15.4 11 12 11Z"/>
+    </svg>
+    Rootwork
+  </a>
+  <a class="back" href="../">Back to the site</a>
+</header>
+
+<main class="sheet">
+  <section class="hero">
+    <p class="mono">Download · Early access · Version 1.0.0</p>
+    <h1>Get <em>Rootwork</em>.</h1>
+    <p class="lede">Free, with no account and nothing to sign in to. Whatever you record stays on the device you record it on.</p>
+  </section>
+
+  <div class="grid" id="choices">
+    <article class="card" data-for="win-x64">
+      <span class="flag">For this computer</span>
+      <svg class="plat" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.1 10.4 4v7.2H3zM11.4 3.9 21 2.5v8.7h-9.6zM3 12.2h7.4v7.2L3 18.3zM11.4 12.2H21v8.7l-9.6-1.4z"/></svg>
+      <h2>Windows</h2>
+      <p class="what">For most PCs and laptops, with an Intel or AMD processor. Windows 10 or 11, 64-bit.</p>
+      <p class="spec">Rootwork-Setup-1.0.0-x64.exe · 110 MB</p>
+      <a class="get" href="https://github.com/Casp3301/rootwork-privacy/releases/download/v1.0.0/Rootwork-Setup-1.0.0-x64.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+        Download for Windows
+      </a>
+    </article>
+
+    <article class="card" data-for="win-arm64">
+      <span class="flag">For this computer</span>
+      <svg class="plat" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5.1 10.4 4v7.2H3zM11.4 3.9 21 2.5v8.7h-9.6zM3 12.2h7.4v7.2L3 18.3zM11.4 12.2H21v8.7l-9.6-1.4z"/></svg>
+      <h2>Windows on ARM</h2>
+      <p class="what">For PCs with a Snapdragon or other ARM processor, like the newer Surface and Copilot+ laptops.</p>
+      <p class="spec">Rootwork-Setup-1.0.0-arm64.exe · 104 MB</p>
+      <a class="get" href="https://github.com/Casp3301/rootwork-privacy/releases/download/v1.0.0/Rootwork-Setup-1.0.0-arm64.exe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+        Download for ARM
+      </a>
+    </article>
+
+    <article class="card" data-for="ios">
+      <span class="flag">For this phone</span>
+      <svg class="plat" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.2-.9-2.2-3.2zM14.2 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
+      <h2>iPhone</h2>
+      <p class="what">On the App Store as early access. Feedback goes straight to me.</p>
+      <p class="spec">iOS · App Store</p>
+      <a class="get" href="https://apps.apple.com/us/app/rootwork-pain-tracker/id6797701797" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.2 1.8-3.3 1.9-3.4-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.7.8-3.3.8-.7 0-1.7-.8-2.8-.8-1.5 0-2.8.8-3.6 2.1-1.5 2.6-.4 6.5 1.1 8.6.7 1 1.6 2.2 2.7 2.1 1.1 0 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2.1.8-1.2 1.2-2.4 1.2-2.4s-2.2-.9-2.2-3.2zM14.2 5.9c.6-.7 1-1.7.9-2.7-.9 0-2 .6-2.6 1.3-.6.6-1.1 1.7-.9 2.6 1 .1 2-.5 2.6-1.2z"/></svg>
+        Download on the App Store
+      </a>
+    </article>
+
+    <article class="card later">
+      <svg class="plat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+      <h2>Everything else</h2>
+      <p class="what">Mac, iPad, Linux and Android arrive with the full release. Same app, still free.</p>
+      <p class="spec">21 October 2026</p>
+      <span class="get">Coming 21 October</span>
+    </article>
+  </div>
+
+  <section class="notes">
+    <div>
+      <h3>If Windows says it protected your PC</h3>
+      <p>Rootwork isn't signed with a paid certificate, so the first time you open the installer Windows doesn't recognise it and puts up a blue box. It's a warning about the publisher being unknown, not about anything found in the file.</p>
+      <div class="shot" aria-hidden="true">
+        <div class="bar"><b>Windows protected your PC</b>Microsoft Defender SmartScreen prevented an unrecognised app from starting.</div>
+        <u>More info</u>
+        <div class="btns"><span class="hl">Run anyway</span><span>Don't run</span></div>
+      </div>
+      <ol class="steps">
+        <li>Choose <b>More info</b>, the small link under the message.</li>
+        <li>Choose <b>Run anyway</b>.</li>
+        <li>The installer opens. It takes about a minute.</li>
+      </ol>
+    </div>
+    <div>
+      <h3>Which Windows do I have?</h3>
+      <p>Open <b>Settings</b>, then <b>System</b>, then <b>About</b>, and look at <b>System type</b>. If it says <b>ARM-based processor</b>, take the ARM download. Anything else, take the first one.</p>
+      <p>This page guesses for you where it can, and marks the one it thinks is yours.</p>
+      <h3 style="margin-top:2rem">Updating</h3>
+      <p>Run the newer installer over the old one. Your records stay where they are. Uninstalling asks before it deletes anything, and keeps your records unless you say otherwise.</p>
+      <details>
+        <summary>Checksums (SHA-256)</summary>
+        <span class="hash">x64 · de27aeb73fad87b9da814c7a3a07c0597fa5c83e7ac23fbd4cf9b05a9c1c4547</span>
+        <span class="hash">arm64 · 01fb60e124e528b4411e59fbde3bc6493a871f68705c42f1f14e0d050ad67b43</span>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="sheet">
+    <span>Rootwork · free, no account, your records stay on your device</span>
+    <span><a href="../privacy/">Privacy</a> &nbsp; <a href="../support/">Support</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  function mark(key) {
+    var card = document.querySelector('[data-for="' + key + '"]');
+    if (!card) return;
+    card.classList.add("yours");
+    // the one it's for goes first
+    card.parentNode.insertBefore(card, card.parentNode.firstChild);
+  }
+  var ua = navigator.userAgent || "";
+  if (/iPhone|iPod/.test(ua)) return mark("ios");
+  if (!/Windows/.test(ua)) return;
+  var uad = navigator.userAgentData;
+  if (uad && uad.getHighEntropyValues) {
+    uad.getHighEntropyValues(["architecture"]).then(function (v) {
+      mark(v.architecture === "arm" ? "win-arm64" : "win-x64");
+    }, function () { mark("win-x64"); });
+  } else mark("win-x64");
+})();
+</script>
+</body>
+</html>
