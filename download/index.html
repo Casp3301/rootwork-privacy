@@ -58,6 +58,8 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-
 .card .what{color:var(--ink-2); font-size:.98rem; flex:1}
 .card .spec{font-family:var(--mono); font-size:.72rem; color:var(--ink-3)}
 .plat{width:30px; height:30px; color:var(--fern)}
+/* Tux, drawn from the supplied artwork: dark areas take the page's green, light ones show the card */
+.plat.tux{display:block; width:26px; height:30px; background:var(--fern); -webkit-mask:url('./tux.png') center/contain no-repeat; mask:url('./tux.png') center/contain no-repeat}
 .get{
   display:inline-flex; align-items:center; justify-content:center; gap:.55rem; margin-top:.4rem;
   text-decoration:none; font-weight:600; padding:.85rem 1.2rem; border-radius:2px;
@@ -136,7 +138,7 @@ footer a{text-decoration:none; border-bottom:1px solid var(--rule-2)}
 
     <article class="card" data-for="linux-x64">
       <span class="flag">For this computer</span>
-      <svg class="plat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="11.5" rx="5.5" ry="8"/><ellipse cx="12" cy="13.5" rx="3" ry="5" fill="currentColor" fill-opacity=".14"/><circle cx="10.2" cy="7.5" r=".8" fill="currentColor" stroke="none"/><circle cx="13.8" cy="7.5" r=".8" fill="currentColor" stroke="none"/><path d="M10.8 9.2h2.4L12 10.5z" fill="currentColor"/><path d="M8.5 20.4c-1.2 0-2 .4-2.2 1h4M15.5 20.4c1.2 0 2 .4 2.2 1h-4"/></svg>
+      <span class="plat tux" role="img" aria-label="Linux"></span>
       <h2>Linux</h2>
       <p class="what">For most PCs and laptops with an Intel or AMD processor. Unpack it, run the install script, and it's in your applications menu.</p>
       <p class="spec">Rootwork-1.0.0-linux-x64.tar.gz · 133 MB</p>
@@ -148,7 +150,7 @@ footer a{text-decoration:none; border-bottom:1px solid var(--rule-2)}
 
     <article class="card" data-for="linux-arm64">
       <span class="flag">For this computer</span>
-      <svg class="plat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="11.5" rx="5.5" ry="8"/><ellipse cx="12" cy="13.5" rx="3" ry="5" fill="currentColor" fill-opacity=".14"/><circle cx="10.2" cy="7.5" r=".8" fill="currentColor" stroke="none"/><circle cx="13.8" cy="7.5" r=".8" fill="currentColor" stroke="none"/><path d="M10.8 9.2h2.4L12 10.5z" fill="currentColor"/><path d="M8.5 20.4c-1.2 0-2 .4-2.2 1h4M15.5 20.4c1.2 0 2 .4 2.2 1h-4"/></svg>
+      <span class="plat tux" role="img" aria-label="Linux"></span>
       <h2>Linux on ARM</h2>
       <p class="what">For ARM machines: a Raspberry Pi 4 or 5, or a Linux laptop with an ARM chip.</p>
       <p class="spec">Rootwork-1.0.0-linux-arm64.tar.gz · 134 MB</p>

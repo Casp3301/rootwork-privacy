@@ -474,18 +474,18 @@ footer{border-top:1px solid var(--rule); padding-block:clamp(2.5rem,5vw,4rem) 3.
 }
 .ost-record i{position:absolute; left:50%; top:50%; width:2.2%; aspect-ratio:1; border-radius:50%; background:#0B1428; transform:translate(-50%,-50%)}
 .ost-spin{position:absolute; inset:0; border-radius:50%; animation:ost-spin 2.2s linear infinite; animation-play-state:paused}
-.ost-deck.playing .ost-record{transform:translateX(34%)}
+.ost-deck.touching .ost-record{transform:translateX(34%)}
+@media (hover:none){ .ost-deck.playing .ost-record{transform:translateX(34%)} }
 .ost-deck.playing .ost-spin{animation-play-state:running}
 @keyframes ost-spin{to{transform:rotate(360deg)}}
 
 .ost-cover{
   all:unset; box-sizing:border-box; position:absolute; inset:0; z-index:1; cursor:pointer; border-radius:3px;
-  transform:translateZ(30px);
-  box-shadow:0 30px 60px -18px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.08);
+  box-shadow:0 10px 26px -14px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.08);
 }
 .ost-cover img{display:block; width:100%; height:100%; object-fit:cover; border-radius:3px}
 .ost-sheen{
-  position:absolute; inset:0; border-radius:3px; pointer-events:none; mix-blend-mode:soft-light;
+  position:absolute; inset:0; border-radius:3px; pointer-events:none; mix-blend-mode:soft-light; opacity:0;
   background:radial-gradient(60% 60% at var(--sx,30%) var(--sy,20%), rgba(255,255,255,.55), transparent 65%);
 }
 .ost-cover:focus-visible{outline:2.5px solid #E0B66A; outline-offset:6px}

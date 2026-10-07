@@ -1,6 +1,6 @@
 /* The soundtrack band: a sleeve that leans toward the pointer and drifts
    with it, a record that slides out and turns while it plays, and a field
-   of fireflies that brightens with the music. Nothing loads until the
+   of fireflies drifting on their own. Nothing loads until the
    cover is pressed. */
 (function () {
   "use strict";
@@ -69,16 +69,18 @@
     audio.currentTime = (seek.value / 1000) * length();
   });
 
-  // the sleeve follows the pointer: it leans toward it and slides a little with it
-  var want = { x: 0, y: 0 }, have = { x: 0, y: 0 }, inside = false;
-  band.addEventListener("pointermove", function (e) {
-    if (e.pointerType === "touch") return;
+  // the sleeve only wakes while the pointer is on it: it rises, leans toward the pointer
+  // and slides with it, and the record comes out. Off it, everything lies flat.
+  var want = { x: 0, y: 0 }, have = { x: 0, y: 0 }, raise = 0, touching = false;
+  function aim(e) {
     var r = deck.getBoundingClientRect();
-    want.x = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width * 0.9)));
-    want.y = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height * 0.9)));
-    inside = true;
-  });
-  band.addEventListener("pointerleave", function () { want.x = 0; want.y = 0; inside = false; });
+    want.x = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width * 0.55)));
+    want.y = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height * 0.55)));
+  }
+  function touch(on) { touching = on; deck.classList.toggle("touching", on); if (!on) { want.x = 0; want.y = 0; } }
+  deck.addEventListener("pointerenter", function (e) { if (e.pointerType === "touch") return; touch(true); aim(e); });
+  deck.addEventListener("pointermove", function (e) { if (touching) aim(e); });
+  deck.addEventListener("pointerleave", function () { touch(false); });
 
   // fireflies, drawn once per frame and only while the band is on screen
   var canvas = band.querySelector(".ost-flies");
@@ -115,15 +117,15 @@
       for (var k2 = 0; k2 < eq.length; k2++) eq[k2].style.transform = "scaleY(.25)";
     }
 
+    raise += ((touching ? 1 : 0) - raise) * 0.12;
+    have.x += (want.x - have.x) * 0.1;
+    have.y += (want.y - have.y) * 0.1;
     if (!still) {
-      // drift toward the pointer; with no pointer, a slow float
-      var idle = inside ? 0 : 1;
-      have.x += (want.x + idle * Math.sin(t * 0.5) * 0.18 - have.x) * 0.08;
-      have.y += (want.y + idle * Math.cos(t * 0.37) * 0.14 - have.y) * 0.08;
-      tilt.style.transform = "translate3d(" + (have.x * 22).toFixed(2) + "px," + (have.y * 16 - Math.sin(t * 1.1) * 4).toFixed(2) + "px,0) rotateY(" + (have.x * 16).toFixed(2) + "deg) rotateX(" + (-have.y * 12).toFixed(2) + "deg)";
+      tilt.style.transform = "translate3d(" + (have.x * 20 * raise).toFixed(2) + "px," + (have.y * 14 * raise).toFixed(2) + "px," + (raise * 34).toFixed(2) + "px) rotateY(" + (have.x * 14 * raise).toFixed(2) + "deg) rotateX(" + (-have.y * 11 * raise).toFixed(2) + "deg)";
       sheen.style.setProperty("--sx", (50 + have.x * 40).toFixed(1) + "%");
       sheen.style.setProperty("--sy", (40 + have.y * 40).toFixed(1) + "%");
-      cover.style.boxShadow = (-have.x * 26).toFixed(1) + "px " + (30 - have.y * 18).toFixed(1) + "px 60px -18px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.08)";
+      sheen.style.opacity = raise.toFixed(3);
+      cover.style.boxShadow = (-have.x * 26 * raise).toFixed(1) + "px " + (10 + 24 * raise - have.y * 14 * raise).toFixed(1) + "px " + (26 + 36 * raise).toFixed(1) + "px " + (-14 - 4 * raise) + "px rgba(0,0,0," + (0.5 + 0.25 * raise).toFixed(2) + "), 0 0 0 1px rgba(255,255,255,.08)";
     }
     glow.style.setProperty("--pulse", (1 + level * 0.28).toFixed(3));
     glow.style.opacity = audio.paused ? "" : (0.55 + level * 0.45).toFixed(3);
@@ -131,11 +133,11 @@
     g.clearRect(0, 0, canvas.width, canvas.height);
     for (var f = 0; f < flies.length; f++) {
       var fl = flies[f];
-      var lift = still ? 0 : (t * 0.006 * fl.v * (1 + level * 4)) % 1;
+      var rise = still ? 0 : (t * 0.006 * fl.v) % 1;
       var x = (fl.x + (still ? 0 : Math.sin(t * 0.3 * fl.v + fl.p) * 0.02)) * canvas.width;
-      var y = (((fl.y - lift) % 1 + 1) % 1) * canvas.height;
-      var a = (0.25 + 0.35 * (0.5 + 0.5 * Math.sin(t * 1.7 * fl.v + fl.p))) * (0.7 + level * 1.6);
-      var r = fl.s * dpr * (1 + level * 0.9);
+      var y = (((fl.y - rise) % 1 + 1) % 1) * canvas.height;
+      var a = (0.25 + 0.35 * (0.5 + 0.5 * Math.sin(t * 1.7 * fl.v + fl.p)));
+      var r = fl.s * dpr;
       var grad = g.createRadialGradient(x, y, 0, x, y, r * 6);
       grad.addColorStop(0, "rgba(255,236,170," + Math.min(1, a).toFixed(3) + ")");
       grad.addColorStop(1, "rgba(255,220,140,0)");
