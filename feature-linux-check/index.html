@@ -34,7 +34,7 @@ p{margin:0; text-wrap:pretty}
 .mono{font-family:var(--mono); font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
 a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-offset:3px}
 
-.top{display:flex; align-items:center; justify-content:space-between; gap:.6rem 1.4rem; flex-wrap:wrap; padding-block:.7rem; border-bottom:1px solid var(--rule)}
+.top{display:flex; align-items:center; justify-content:space-between; gap:.6rem 1.4rem; flex-wrap:wrap; padding-block:.5rem; border-bottom:1px solid var(--rule)}
 .wordmark{display:inline-flex; align-items:center; gap:.5rem; text-decoration:none; font-family:var(--display); font-size:1.15rem; color:var(--fern-2)}
 .wordmark svg{width:20px; height:20px}
 .top h1{font-size:clamp(1rem,.8rem + .6vw,1.3rem); margin-right:auto}
@@ -42,9 +42,9 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-
 .top nav{display:flex; align-items:center; gap:1rem}
 .back{font-weight:600; font-size:.92rem; text-decoration:none; border-bottom:1.5px solid var(--gold); padding-bottom:.05rem}
 
-.plate,.card{background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.8rem 1rem .85rem}
+.plate,.card{background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.6rem .9rem .65rem}
 .plate .mono{display:block; margin-bottom:.25rem}
-.top-plates{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr)); gap:.8rem; margin-top:.9rem}
+.top-plates{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr)); gap:.7rem; margin-top:.7rem}
 .big{font-family:var(--mono); font-size:clamp(.9rem,.6rem + .6vw,1.1rem); word-break:break-all; line-height:1.3; min-height:1.3em}
 .wait{color:var(--ink-3)}
 .verdict{font-family:var(--display); font-size:1.45rem; line-height:1.2}
@@ -59,19 +59,20 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-
 .btn.quiet:hover{background:var(--card); border-color:var(--ink-3)}
 .row{display:flex; flex-wrap:wrap; align-items:center; gap:.4rem .8rem; margin-top:.5rem}
 
-.grid{columns:5 15.5rem; column-gap:.8rem; margin-top:.8rem}
-.card{break-inside:avoid; margin:0 0 .8rem}
+.grid{columns:5 15.5rem; column-gap:.7rem; margin-top:.7rem}
+.card{break-inside:avoid; margin:0 0 .7rem}
 .card h2{font-size:1.02rem; margin-bottom:.3rem}
 dl{margin:0}
-.kv{display:grid; grid-template-columns:minmax(4.6rem,.6fr) 1.4fr; gap:.1rem .5rem; padding:.13rem 0; border-top:1px solid var(--rule); font-size:.8rem; line-height:1.3}
+.kv{display:grid; grid-template-columns:minmax(4.6rem,.6fr) 1.4fr; gap:.1rem .5rem; padding:.1rem 0; border-top:1px solid var(--rule); font-size:.8rem; line-height:1.3}
 .kv dt{color:var(--ink-3)}
 .kv dd{margin:0; font-family:var(--mono); font-size:.74rem; word-break:break-word; align-self:center}
 .kv dd.wait{font-family:var(--text)}
 .cand{list-style:none; margin:0; padding:0}
 .cand li{padding:.2rem 0; border-top:1px solid var(--rule); font-family:var(--mono); font-size:.72rem; line-height:1.35; word-break:break-all}
-.cand li small{display:block; font-family:var(--text); font-size:.76rem; color:var(--ink-3)}
+.tiny{font-size:.7rem; padding:.12rem .45rem; margin-left:.5rem; vertical-align:middle; letter-spacing:0; text-transform:none; font-family:var(--text)}
+.mono .tiny{margin-left:.4rem}
 
-footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--ink-3); font-size:.78rem; line-height:1.45}
+footer{border-top:1px solid var(--rule); padding-block:.45rem .55rem; color:var(--ink-3); font-size:.72rem; line-height:1.4}
 </style>
 </head>
 <body>
@@ -92,14 +93,17 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
 <main class="sheet">
   <div class="top-plates" aria-live="polite">
     <section class="plate">
-      <span class="mono">Your IP address</span>
+      <span class="mono">Your IP address <button class="btn quiet tiny" id="copy" type="button" hidden>Copy</button></span>
       <div class="big wait" id="ip">Looking it up…</div>
-      <div class="row"><button class="btn" id="copy" type="button" hidden>Copy</button></div>
     </section>
     <section class="plate">
-      <span class="mono">Your port</span>
+      <span class="mono">Minecraft Java address <button class="btn quiet tiny" id="copyMc" type="button" hidden>Copy</button></span>
+      <div class="big wait" id="mcj">Looking it up…</div>
+      <p class="detail">Bedrock: <span id="mcb">…</span></p>
+    </section>
+    <section class="plate" title="The source port of your connection. Your browser picks it and it changes every time.">
+      <span class="mono">Your port (source)</span>
       <div class="big wait" id="port">Looking it up…</div>
-      <p class="detail">Source port of your connection. Your browser picks it; it changes every time.</p>
     </section>
     <section class="plate">
       <span class="mono">Linux check</span>
@@ -113,7 +117,7 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
   <noscript><p class="detail">This page needs JavaScript to read your connection.</p></noscript>
 </main>
 
-<footer><div class="sheet">Only you see this. Your browser asks ifconfig.me, ipify.org, ipwho.is, ipinfo.io, Cloudflare (including the speed test) and Google's STUN server directly; nothing is stored or sent to Rootwork. Location comes from your IP address, so it can be a town or two off, or wrong on a VPN. <a href="../download/">Download Rootwork</a>.</div></footer>
+<footer><div class="sheet">Only you see this. Your browser asks ifconfig.me, ipify.org, ipwho.is, ipinfo.io, Cloudflare and Google STUN directly; nothing is stored or sent to Rootwork. Location is from your IP, so it can be off or wrong on a VPN. <a href="../download/">Download Rootwork</a></div></footer>
 
 <script>
 (function () {
@@ -121,17 +125,15 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
   var $ = function (id) { return document.getElementById(id); };
 
   var sections = [
-    ["Addresses", [["Connecting over", "family"], ["IPv4", "v4"], ["IPv6", "v6"], ["Reverse DNS", "rdns"]]],
-    ["Provider", [["Network", "org"], ["ASN", "asn"], ["ISP", "isp"], ["Domain", "domain"]]],
-    ["Location", [["City", "city"], ["Region", "region"], ["Country", "country"], ["Postal code", "postal"],
-                  ["Coordinates", "coords"], ["Network timezone", "iptz"], ["Browser timezone", "btz"], ["Timezones agree", "tzmatch"]]],
-    ["Your connection", [["Link type", "ctype"], ["Effective type", "etype"], ["Downlink · RTT", "link"],
-                         ["Data saver", "saver"], ["Online", "online"], ["Page protocol", "proto"]]],
-    ["Cloudflare edge", [["Data centre", "colo"], ["HTTP", "http"], ["TLS", "tls"], ["Key exchange", "kex"],
-                         ["WARP", "warp"], ["Gateway", "gateway"]]],
-    ["This machine", [["Platform", "plat"], ["Browser", "ua"], ["Languages", "lang"], ["CPU · memory", "hw"],
-                      ["Screen", "screen"], ["Touch points", "touch"], ["Cookies", "cookies"],
-                      ["DNT · GPC", "privacy"]]]
+    ["Addresses", [["Over", "family"], ["IPv4", "v4"], ["IPv6", "v6"], ["Reverse DNS", "rdns"]]],
+    ["Network", [["Provider", "org"], ["ASN · domain", "asn"], ["Edge", "colo"], ["HTTP · TLS", "http"],
+                 ["Key exchange", "kex"], ["WARP · Gateway", "warp"]]],
+    ["Location", [["City", "city"], ["Country", "country"], ["Coordinates", "coords"],
+                  ["Network zone", "iptz"], ["Browser zone", "btz"]]],
+    ["Your connection", [["Type", "etype"], ["Downlink · RTT", "link"], ["Online · saver", "online"],
+                         ["Page protocol", "proto"]]],
+    ["This machine", [["Platform", "plat"], ["Languages", "lang"], ["CPU · memory", "hw"], ["Screen", "screen"],
+                      ["Touch · cookies", "touch"], ["DNT · GPC", "privacy"]]]
   ];
   var speedRows = [["Latency", "lat"], ["Download", "down"], ["Upload", "up"]];
 
@@ -141,9 +143,8 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
   var html = sections.map(function (s) {
     return '<section class="card"><h2>' + s[0] + '</h2><dl>' + s[1].map(rowHtml).join("") + '</dl></section>';
   }).join("");
-  html += '<section class="card"><h2>Speed</h2><dl>' + speedRows.map(rowHtml).join("") + '</dl>' +
-          '<div class="row"><button class="btn" id="speedBtn" type="button">Run speed test</button>' +
-          '<span class="detail" id="speedNote">10 MB down, 2 MB up.</span></div></section>';
+  html += '<section class="card"><h2>Speed <button class="btn tiny" id="speedBtn" type="button" title="Downloads 10 MB and uploads 2 MB">Run test</button></h2>' +
+          '<dl>' + speedRows.map(rowHtml).join("") + '</dl></section>';
   html += '<section class="card"><h2>WebRTC</h2><ul class="cand" id="cands"><li class="wait">Gathering…</li></ul></section>';
   $("cards").innerHTML = html;
 
@@ -180,34 +181,47 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
       set("port", r.port || "Not available from this lookup");
       set("family", r.ip.indexOf(":") > -1 ? "IPv6" : "IPv4");
       $("copy").hidden = false;
+      known.main = r.ip;
+      showMinecraft();
     }, function () {
       set("ip", "Couldn't reach the lookup service.");
       setAll(["port", "family"], NA);
+      showMinecraft();
     });
 
-  getJson("https://api.ipify.org?format=json").then(function (j) { set("v4", j.ip); },
-    function () { set("v4", "None. This network has no IPv4 route, or it was blocked."); });
+  // friends join with the IPv4 when there is one; a bare IPv6 needs brackets before the port
+  var known = {};
+  function showMinecraft() {
+    var ip = known.v4 || known.main;
+    if (!ip) {
+      if (known.settled) setAll(["mcj", "mcb"], NA);
+      known.settled = true;
+      return;
+    }
+    var host = ip.indexOf(":") > -1 ? "[" + ip + "]" : ip;
+    set("mcj", host + ":25565");
+    set("mcb", ip + ", port 19132");
+    $("copyMc").hidden = false;
+  }
+
+  getJson("https://api.ipify.org?format=json").then(function (j) { set("v4", j.ip); known.v4 = j.ip; showMinecraft(); },
+    function () { set("v4", "None. This network has no IPv4 route, or it was blocked."); showMinecraft(); });
   getJson("https://api6.ipify.org?format=json").then(function (j) { set("v6", j.ip); },
     function () { set("v6", "None. This network is IPv4 only, or it was blocked."); });
 
   getJson("https://ipwho.is/").then(function (j) {
     if (j.success === false) throw new Error(j.message);
     var c = j.connection || {};
-    set("org", c.org);
-    set("asn", c.asn ? "AS" + c.asn : "");
-    set("isp", c.isp);
-    set("domain", c.domain);
-    set("city", j.city);
-    set("region", j.region);
+    set("org", c.org + (c.isp && c.isp !== c.org ? " / " + c.isp : ""));
+    set("asn", [c.asn ? "AS" + c.asn : "", c.domain].filter(Boolean).join(" · "));
+    set("city", [j.city, j.region].filter(Boolean).join(", ") + (j.postal ? " " + j.postal : ""));
     set("country", j.country ? (j.flag && j.flag.emoji ? j.flag.emoji + " " : "") + j.country : "");
-    set("postal", j.postal);
     set("coords", j.latitude != null ? j.latitude.toFixed(3) + ", " + j.longitude.toFixed(3) : "");
     var tz = j.timezone || {};
     set("iptz", tz.id ? tz.id + (tz.abbr ? " (" + tz.abbr + ")" : "") : "");
-    var bz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    set("tzmatch", !tz.id ? "—" : tz.id === bz ? "Yes" : "No (your browser says " + bz + ")");
+    if (tz.id) set("btz", browserZone + (tz.id === browserZone ? " · matches" : " · differs"));
   }, function () {
-    setAll(["org", "asn", "isp", "domain", "city", "region", "country", "postal", "coords", "iptz", "tzmatch"], NA);
+    setAll(["org", "asn", "city", "country", "coords", "iptz"], NA);
   });
 
   getJson("https://ipinfo.io/json").then(function (j) {
@@ -217,47 +231,46 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
   getText("https://www.cloudflare.com/cdn-cgi/trace").then(function (t) {
     var o = {};
     t.split("\n").forEach(function (l) { var i = l.indexOf("="); if (i > 0) o[l.slice(0, i)] = l.slice(i + 1); });
+    var warp = o.warp === "on" ? "On" : o.warp === "plus" ? "WARP+" : "Off";
     set("colo", o.colo);
-    set("http", o.http);
-    set("tls", o.tls);
+    set("http", [o.http, o.tls].filter(Boolean).join(" · "));
     set("kex", o.kex);
-    set("warp", o.warp === "on" ? "On" : o.warp === "plus" ? "On (WARP+)" : "Off");
-    set("gateway", o.gateway === "on" ? "On" : "Off");
-  }, function () { setAll(["colo", "http", "tls", "kex", "warp", "gateway"], NA); });
+    set("warp", warp + " · " + (o.gateway === "on" ? "On" : "Off"));
+  }, function () { setAll(["colo", "http", "kex", "warp"], NA); });
 
   // what the browser itself will tell us
   var nav = navigator;
   var conn = nav.connection || nav.mozConnection || nav.webkitConnection;
   var NOTEXP = "Not shared by this browser";
+  var browserZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   if (conn) {
-    set("ctype", conn.type || NOTEXP);
-    set("etype", conn.effectiveType);
+    set("etype", [conn.effectiveType, conn.type].filter(Boolean).join(" · "));
     set("link", conn.downlink != null ? conn.downlink + " Mbit/s · " + conn.rtt + " ms" : "");
-    set("saver", yesNo(conn.saveData));
   } else {
-    setAll(["ctype", "etype", "link", "saver"], NOTEXP);
+    setAll(["etype", "link"], NOTEXP);
   }
-  set("online", yesNo(nav.onLine));
+  set("online", yesNo(nav.onLine) + " · saver " + (conn && conn.saveData ? "on" : "off"));
   var navEntry = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
   set("proto", navEntry && navEntry.nextHopProtocol ? navEntry.nextHopProtocol : "");
-  set("btz", Intl.DateTimeFormat().resolvedOptions().timeZone);
+  set("btz", browserZone);
 
   var ua = nav.userAgent || "";
   var isLinux = /Linux|X11/.test(ua) && !/Android/.test(ua);
   var osName = /Android/.test(ua) ? "Android" : /iPhone|iPad|iPod/.test(ua) ? "iOS" : /Windows/.test(ua) ? "Windows"
              : /Mac/.test(ua) ? "macOS" : isLinux ? "Linux" : "something else";
-  set("plat", (nav.userAgentData && nav.userAgentData.platform) || nav.platform || osName);
   var brands = (nav.userAgentData && nav.userAgentData.brands || []).filter(function (b) { return !/not.?a.?brand/i.test(b.brand); });
   var brand = brands.filter(function (b) { return b.brand !== "Chromium"; })[0] || brands[0];
   var uaMatch = ua.match(/(Firefox|Edg|OPR|Chrome|Version)\/(\d+)/);
-  set("ua", brand ? brand.brand + " " + brand.version : uaMatch ? uaMatch[1].replace("Edg", "Edge").replace("OPR", "Opera").replace("Version", "Safari") + " " + uaMatch[2] : ua);
-  $("ua").dataset.full = ua;
-  $("ua").title = ua;
+  var browserName = brand ? brand.brand + " " + brand.version
+    : uaMatch ? uaMatch[1].replace("Edg", "Edge").replace("OPR", "Opera").replace("Version", "Safari") + " " + uaMatch[2] : "unknown browser";
+  var platName = (nav.userAgentData && nav.userAgentData.platform) || nav.platform || osName;
+  set("plat", platName + " · " + browserName);
+  $("plat").dataset.full = platName + " · " + ua;
+  $("plat").title = ua;
   set("lang", (nav.languages && nav.languages.length ? nav.languages : [nav.language]).join(", "));
   set("hw", (nav.hardwareConcurrency || "?") + " threads · " + (nav.deviceMemory ? "about " + nav.deviceMemory + " GB" : "memory not shared"));
   set("screen", screen.width + " × " + screen.height + " at " + (window.devicePixelRatio || 1) + "x");
-  set("touch", nav.maxTouchPoints || "0");
-  set("cookies", yesNo(nav.cookieEnabled));
+  set("touch", (nav.maxTouchPoints || "0") + " points · cookies " + (nav.cookieEnabled ? "on" : "off"));
   set("privacy", (nav.doNotTrack === "1" ? "On" : "Off") + " · " + (nav.globalPrivacyControl ? "On" : "Off"));
 
   // the linux verdict
@@ -325,7 +338,7 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
       .catch(function () { setAll(["down", "up"], "Test failed"); })
       .then(function () {
         speedBtn.disabled = false;
-        speedBtn.textContent = "Run it again";
+        speedBtn.textContent = "Run again";
       });
   });
 
@@ -338,13 +351,12 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
     var key = type + addr + port + proto;
     if (!addr || seen[key]) return;
     seen[key] = 1;
-    var what = type === "host" ? (/\.local$/.test(addr) ? "Local address, hidden by your browser" : "Local address")
-             : type === "srflx" ? "Public address as seen by STUN" : type === "relay" ? "Relayed" : type;
+    var hidden = /\.local$/.test(addr);
+    var what = type === "host" ? (hidden ? "local, hidden" : "local")
+             : type === "srflx" ? "public" : type === "relay" ? "relayed" : type;
     var li = document.createElement("li");
-    li.textContent = addr + " : " + port + " / " + proto;
-    var s = document.createElement("small");
-    s.textContent = what;
-    li.appendChild(s);
+    li.textContent = what + " · " + (hidden ? "" : addr) + ":" + port + " " + proto;
+    if (hidden) li.title = addr;
     if (cands.firstChild && cands.firstChild.classList.contains("wait")) cands.textContent = "";
     cands.appendChild(li);
   }
@@ -372,13 +384,16 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
     btn.textContent = text;
     setTimeout(function () { btn.textContent = back; }, 1600);
   }
-  $("copy").addEventListener("click", function () {
-    var btn = this;
-    if (navigator.clipboard) navigator.clipboard.writeText($("ip").textContent).then(function () { flash(btn, "Copied", "Copy"); });
+  [["copy", "ip"], ["copyMc", "mcj"]].forEach(function (pair) {
+    $(pair[0]).addEventListener("click", function () {
+      var btn = this;
+      if (navigator.clipboard) navigator.clipboard.writeText($(pair[1]).textContent).then(function () { flash(btn, "Copied", "Copy"); });
+    });
   });
   $("copyAll").addEventListener("click", function () {
     var btn = this;
     var lines = ["IP address: " + $("ip").textContent, "Port: " + $("port").textContent,
+                 "Minecraft Java: " + $("mcj").textContent, "Minecraft Bedrock: " + $("mcb").textContent,
                  "Linux check: " + verdict.textContent + " (" + detail.textContent + ")"];
     Array.prototype.forEach.call(document.querySelectorAll(".card"), function (card) {
       lines.push("", card.querySelector("h2").textContent);
@@ -387,7 +402,7 @@ footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--
         lines.push(kv.querySelector("dt").textContent + ": " + (dd.dataset.full || dd.textContent));
       });
       Array.prototype.forEach.call(card.querySelectorAll(".cand li"), function (li) {
-        lines.push(li.firstChild.textContent + " (" + li.querySelector("small").textContent + ")");
+        lines.push(li.textContent + (li.title ? " (" + li.title + ")" : ""));
       });
     });
     if (navigator.clipboard) navigator.clipboard.writeText(lines.join("\n")).then(function () { flash(btn, "Copied", "Copy everything as text"); });
