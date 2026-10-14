@@ -30,49 +30,48 @@ body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--text
 a{color:inherit}
 h1,h2{font-family:var(--display); font-weight:500; margin:0; letter-spacing:-.02em; text-wrap:balance}
 p{margin:0; text-wrap:pretty}
-.sheet{max-width:68rem; margin:0 auto; padding-inline:var(--gutter)}
-.mono{font-family:var(--mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3)}
-a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-offset:4px}
+.sheet{max-width:100rem; margin:0 auto; padding-inline:clamp(.9rem,2vw,1.6rem)}
+.mono{font-family:var(--mono); font-size:.64rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-offset:3px}
 
-.top{display:flex; align-items:center; justify-content:space-between; padding-block:1.4rem; border-bottom:1px solid var(--rule)}
-.wordmark{display:inline-flex; align-items:center; gap:.55rem; text-decoration:none; font-family:var(--display); font-size:1.25rem; color:var(--fern-2)}
-.wordmark svg{width:22px; height:22px}
-.back{font-weight:600; text-decoration:none; border-bottom:1.5px solid var(--gold); padding-bottom:.1rem}
+.top{display:flex; align-items:center; justify-content:space-between; gap:.6rem 1.4rem; flex-wrap:wrap; padding-block:.7rem; border-bottom:1px solid var(--rule)}
+.wordmark{display:inline-flex; align-items:center; gap:.5rem; text-decoration:none; font-family:var(--display); font-size:1.15rem; color:var(--fern-2)}
+.wordmark svg{width:20px; height:20px}
+.top h1{font-size:clamp(1rem,.8rem + .6vw,1.3rem); margin-right:auto}
+.top h1 em{color:var(--fern)}
+.top nav{display:flex; align-items:center; gap:1rem}
+.back{font-weight:600; font-size:.92rem; text-decoration:none; border-bottom:1.5px solid var(--gold); padding-bottom:.05rem}
 
-.hero{padding-block:clamp(3rem,8vw,5rem) .5rem}
-.hero h1{font-size:clamp(2.2rem,1.3rem + 4vw,3.8rem); line-height:1.05; margin-top:.9rem}
-.hero h1 em{color:var(--fern); font-style:italic}
-
-.plate,.card{background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:1.4rem 1.4rem 1.3rem}
-.plate .mono{display:block; margin-bottom:.45rem}
-.top-plates{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr)); gap:1.1rem; margin-top:1.6rem}
-.big{font-family:var(--mono); font-size:clamp(1.2rem,.8rem + 2vw,1.85rem); word-break:break-all; line-height:1.3; min-height:1.3em}
+.plate,.card{background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:.8rem 1rem .85rem}
+.plate .mono{display:block; margin-bottom:.25rem}
+.top-plates{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr)); gap:.8rem; margin-top:.9rem}
+.big{font-family:var(--mono); font-size:clamp(.9rem,.6rem + .6vw,1.1rem); word-break:break-all; line-height:1.3; min-height:1.3em}
 .wait{color:var(--ink-3)}
-.verdict{font-family:var(--display); font-size:1.7rem; line-height:1.2}
+.verdict{font-family:var(--display); font-size:1.45rem; line-height:1.2}
 .verdict.yes{color:var(--fern)}
-.detail{margin-top:.35rem; color:var(--ink-2); font-size:.96rem}
+.detail{margin-top:.2rem; color:var(--ink-2); font-size:.84rem; line-height:1.4}
 
-.btn{font:inherit; font-weight:600; cursor:pointer; background:var(--fern-2); color:var(--paper); border:0; border-radius:2px; padding:.55rem 1rem; transition:background .18s ease}
+.btn{font:inherit; font-size:.88rem; font-weight:600; cursor:pointer; background:var(--fern-2); color:var(--paper); border:0; border-radius:2px; padding:.35rem .75rem; transition:background .18s ease}
 .btn:hover{background:var(--fern)}
 .btn[disabled]{background:var(--rule-2); color:var(--ink-3); cursor:default}
 .btn[hidden]{display:none}
 .btn.quiet{background:transparent; color:var(--ink); border:1px solid var(--rule-2)}
 .btn.quiet:hover{background:var(--card); border-color:var(--ink-3)}
-.row{display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1.2rem; margin-top:1rem}
+.row{display:flex; flex-wrap:wrap; align-items:center; gap:.4rem .8rem; margin-top:.5rem}
 
-.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr)); gap:1.1rem; margin-top:1.1rem}
-.card h2{font-size:1.3rem; margin-bottom:.7rem}
+.grid{columns:5 15.5rem; column-gap:.8rem; margin-top:.8rem}
+.card{break-inside:avoid; margin:0 0 .8rem}
+.card h2{font-size:1.02rem; margin-bottom:.3rem}
 dl{margin:0}
-.kv{display:grid; grid-template-columns:minmax(6.5rem,.8fr) 1.4fr; gap:.2rem .8rem; padding:.42rem 0; border-top:1px solid var(--rule); font-size:.95rem}
+.kv{display:grid; grid-template-columns:minmax(4.6rem,.6fr) 1.4fr; gap:.1rem .5rem; padding:.13rem 0; border-top:1px solid var(--rule); font-size:.8rem; line-height:1.3}
 .kv dt{color:var(--ink-3)}
-.kv dd{margin:0; font-family:var(--mono); font-size:.82rem; word-break:break-word; align-self:center}
+.kv dd{margin:0; font-family:var(--mono); font-size:.74rem; word-break:break-word; align-self:center}
 .kv dd.wait{font-family:var(--text)}
 .cand{list-style:none; margin:0; padding:0}
-.cand li{padding:.42rem 0; border-top:1px solid var(--rule); font-family:var(--mono); font-size:.8rem; word-break:break-all}
-.cand li small{display:block; font-family:var(--text); font-size:.82rem; color:var(--ink-3)}
+.cand li{padding:.2rem 0; border-top:1px solid var(--rule); font-family:var(--mono); font-size:.72rem; line-height:1.35; word-break:break-all}
+.cand li small{display:block; font-family:var(--text); font-size:.76rem; color:var(--ink-3)}
 
-.fine{margin-top:2rem; color:var(--ink-3); font-size:.92rem; max-width:62ch}
-footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3rem; color:var(--ink-3); font-size:.92rem}
+footer{border-top:1px solid var(--rule); padding-block:.6rem .8rem; color:var(--ink-3); font-size:.78rem; line-height:1.45}
 </style>
 </head>
 <body>
@@ -83,15 +82,14 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
     </svg>
     Rootwork
   </a>
-  <a class="back" href="../">Back to the site</a>
+  <h1>Where you're <em>connecting from</em></h1>
+  <nav>
+    <button class="btn quiet" id="copyAll" type="button">Copy everything as text</button>
+    <a class="back" href="../">Back to the site</a>
+  </nav>
 </header>
 
 <main class="sheet">
-  <section class="hero">
-    <p class="mono">Feature check · Linux</p>
-    <h1>Where you're <em>connecting from</em>.</h1>
-  </section>
-
   <div class="top-plates" aria-live="polite">
     <section class="plate">
       <span class="mono">Your IP address</span>
@@ -101,7 +99,7 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
     <section class="plate">
       <span class="mono">Your port</span>
       <div class="big wait" id="port">Looking it up…</div>
-      <p class="detail">The source port your connection came from. Your browser picks it and it changes with every connection.</p>
+      <p class="detail">Source port of your connection. Your browser picks it; it changes every time.</p>
     </section>
     <section class="plate">
       <span class="mono">Linux check</span>
@@ -112,13 +110,10 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
 
   <div class="grid" id="cards"></div>
 
-  <div class="row"><button class="btn quiet" id="copyAll" type="button">Copy everything as text</button></div>
-
-  <noscript><p class="fine">This page needs JavaScript to read your connection.</p></noscript>
-  <p class="fine">Only you see this. Your browser makes the requests directly to ifconfig.me, ipify.org, ipwho.is, ipinfo.io and Cloudflare (including its speed test), and asks Google's STUN server how your network looks from outside. Nothing on this page is stored or sent to Rootwork. Location is worked out from your IP address, so it can be a town or two off, or wrong if you're on a VPN.</p>
+  <noscript><p class="detail">This page needs JavaScript to read your connection.</p></noscript>
 </main>
 
-<footer><div class="sheet">Rootwork is a quiet place to track pain. <a href="../download/">Download it</a>.</div></footer>
+<footer><div class="sheet">Only you see this. Your browser asks ifconfig.me, ipify.org, ipwho.is, ipinfo.io, Cloudflare (including the speed test) and Google's STUN server directly; nothing is stored or sent to Rootwork. Location comes from your IP address, so it can be a town or two off, or wrong on a VPN. <a href="../download/">Download Rootwork</a>.</div></footer>
 
 <script>
 (function () {
@@ -130,15 +125,15 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
     ["Provider", [["Network", "org"], ["ASN", "asn"], ["ISP", "isp"], ["Domain", "domain"]]],
     ["Location", [["City", "city"], ["Region", "region"], ["Country", "country"], ["Postal code", "postal"],
                   ["Coordinates", "coords"], ["Network timezone", "iptz"], ["Browser timezone", "btz"], ["Timezones agree", "tzmatch"]]],
-    ["Your connection", [["Link type", "ctype"], ["Effective type", "etype"], ["Downlink", "downlink"],
-                         ["Browser RTT", "crtt"], ["Data saver", "saver"], ["Online", "online"], ["Page protocol", "proto"]]],
+    ["Your connection", [["Link type", "ctype"], ["Effective type", "etype"], ["Downlink · RTT", "link"],
+                         ["Data saver", "saver"], ["Online", "online"], ["Page protocol", "proto"]]],
     ["Cloudflare edge", [["Data centre", "colo"], ["HTTP", "http"], ["TLS", "tls"], ["Key exchange", "kex"],
                          ["WARP", "warp"], ["Gateway", "gateway"]]],
-    ["This machine", [["Platform", "plat"], ["Browser", "ua"], ["Languages", "lang"], ["CPU threads", "cores"],
-                      ["Memory", "mem"], ["Screen", "screen"], ["Touch points", "touch"], ["Cookies", "cookies"],
-                      ["Do Not Track", "dnt"], ["Global Privacy Control", "gpc"]]]
+    ["This machine", [["Platform", "plat"], ["Browser", "ua"], ["Languages", "lang"], ["CPU · memory", "hw"],
+                      ["Screen", "screen"], ["Touch points", "touch"], ["Cookies", "cookies"],
+                      ["DNT · GPC", "privacy"]]]
   ];
-  var speedRows = [["Latency", "lat"], ["Best ping", "latmin"], ["Jitter", "jitter"], ["Download", "down"], ["Upload", "up"]];
+  var speedRows = [["Latency", "lat"], ["Download", "down"], ["Upload", "up"]];
 
   function rowHtml(r) {
     return '<div class="kv"><dt>' + r[0] + '</dt><dd id="' + r[1] + '" class="wait">…</dd></div>';
@@ -148,9 +143,8 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
   }).join("");
   html += '<section class="card"><h2>Speed</h2><dl>' + speedRows.map(rowHtml).join("") + '</dl>' +
           '<div class="row"><button class="btn" id="speedBtn" type="button">Run speed test</button>' +
-          '<span class="detail" id="speedNote">Downloads about 10 MB and uploads 2 MB.</span></div></section>';
-  html += '<section class="card"><h2>WebRTC</h2><ul class="cand" id="cands"><li class="wait">Gathering…</li></ul>' +
-          '<p class="detail">What a web page can learn about your network through WebRTC. Local addresses are usually hidden behind a random <code>.local</code> name.</p></section>';
+          '<span class="detail" id="speedNote">10 MB down, 2 MB up.</span></div></section>';
+  html += '<section class="card"><h2>WebRTC</h2><ul class="cand" id="cands"><li class="wait">Gathering…</li></ul></section>';
   $("cards").innerHTML = html;
 
   function set(id, v) {
@@ -238,11 +232,10 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
   if (conn) {
     set("ctype", conn.type || NOTEXP);
     set("etype", conn.effectiveType);
-    set("downlink", conn.downlink != null ? conn.downlink + " Mbit/s" : "");
-    set("crtt", conn.rtt != null ? conn.rtt + " ms" : "");
+    set("link", conn.downlink != null ? conn.downlink + " Mbit/s · " + conn.rtt + " ms" : "");
     set("saver", yesNo(conn.saveData));
   } else {
-    setAll(["ctype", "etype", "downlink", "crtt", "saver"], NOTEXP);
+    setAll(["ctype", "etype", "link", "saver"], NOTEXP);
   }
   set("online", yesNo(nav.onLine));
   var navEntry = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
@@ -254,15 +247,18 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
   var osName = /Android/.test(ua) ? "Android" : /iPhone|iPad|iPod/.test(ua) ? "iOS" : /Windows/.test(ua) ? "Windows"
              : /Mac/.test(ua) ? "macOS" : isLinux ? "Linux" : "something else";
   set("plat", (nav.userAgentData && nav.userAgentData.platform) || nav.platform || osName);
-  set("ua", ua);
+  var brands = (nav.userAgentData && nav.userAgentData.brands || []).filter(function (b) { return !/not.?a.?brand/i.test(b.brand); });
+  var brand = brands.filter(function (b) { return b.brand !== "Chromium"; })[0] || brands[0];
+  var uaMatch = ua.match(/(Firefox|Edg|OPR|Chrome|Version)\/(\d+)/);
+  set("ua", brand ? brand.brand + " " + brand.version : uaMatch ? uaMatch[1].replace("Edg", "Edge").replace("OPR", "Opera").replace("Version", "Safari") + " " + uaMatch[2] : ua);
+  $("ua").dataset.full = ua;
+  $("ua").title = ua;
   set("lang", (nav.languages && nav.languages.length ? nav.languages : [nav.language]).join(", "));
-  set("cores", nav.hardwareConcurrency);
-  set("mem", nav.deviceMemory ? "About " + nav.deviceMemory + " GB" : NOTEXP);
+  set("hw", (nav.hardwareConcurrency || "?") + " threads · " + (nav.deviceMemory ? "about " + nav.deviceMemory + " GB" : "memory not shared"));
   set("screen", screen.width + " × " + screen.height + " at " + (window.devicePixelRatio || 1) + "x");
   set("touch", nav.maxTouchPoints || "0");
   set("cookies", yesNo(nav.cookieEnabled));
-  set("dnt", nav.doNotTrack === "1" ? "On" : "Off");
-  set("gpc", nav.globalPrivacyControl ? "On" : "Off");
+  set("privacy", (nav.doNotTrack === "1" ? "On" : "Off") + " · " + (nav.globalPrivacyControl ? "On" : "Off"));
 
   // the linux verdict
   var verdict = $("verdict"), detail = $("detail");
@@ -304,10 +300,8 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
       medianLatency = sorted[Math.floor(sorted.length / 2)];
       var jit = 0;
       for (var i = 1; i < times.length; i++) jit += Math.abs(times[i] - times[i - 1]);
-      set("lat", Math.round(medianLatency) + " ms");
-      set("latmin", Math.round(sorted[0]) + " ms");
-      set("jitter", (jit / (times.length - 1)).toFixed(1) + " ms");
-    }, function () { setAll(["lat", "latmin", "jitter"], NA); });
+      set("lat", Math.round(medianLatency) + " ms · best " + Math.round(sorted[0]) + " · jitter " + (jit / (times.length - 1)).toFixed(1));
+    }, function () { set("lat", NA); });
   }
   measureLatency();
   setAll(["down", "up"], "Not run yet");
@@ -389,7 +383,8 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
     Array.prototype.forEach.call(document.querySelectorAll(".card"), function (card) {
       lines.push("", card.querySelector("h2").textContent);
       Array.prototype.forEach.call(card.querySelectorAll(".kv"), function (kv) {
-        lines.push(kv.querySelector("dt").textContent + ": " + kv.querySelector("dd").textContent);
+        var dd = kv.querySelector("dd");
+        lines.push(kv.querySelector("dt").textContent + ": " + (dd.dataset.full || dd.textContent));
       });
       Array.prototype.forEach.call(card.querySelectorAll(".cand li"), function (li) {
         lines.push(li.firstChild.textContent + " (" + li.querySelector("small").textContent + ")");
