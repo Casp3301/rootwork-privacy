@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rootwork feature Linux check</title>
-<meta name="description" content="Shows the address you're connecting from and whether this machine reads as Linux.">
+<meta name="description" content="Shows the address and network you're connecting from, and whether this machine reads as Linux.">
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#F7F5EE">
@@ -26,11 +26,11 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--text); font-size:clamp(1rem,.96rem + .2vw,1.075rem); line-height:1.65; -webkit-font-smoothing:antialiased}
+body{margin:0; background:var(--paper); color:var(--ink); font-family:var(--text); font-size:clamp(1rem,.96rem + .2vw,1.075rem); line-height:1.6; -webkit-font-smoothing:antialiased}
 a{color:inherit}
-h1{font-family:var(--display); font-weight:500; margin:0; letter-spacing:-.02em; text-wrap:balance}
+h1,h2{font-family:var(--display); font-weight:500; margin:0; letter-spacing:-.02em; text-wrap:balance}
 p{margin:0; text-wrap:pretty}
-.sheet{max-width:46rem; margin:0 auto; padding-inline:var(--gutter)}
+.sheet{max-width:68rem; margin:0 auto; padding-inline:var(--gutter)}
 .mono{font-family:var(--mono); font-size:.68rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-3)}
 a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-offset:4px}
 
@@ -39,22 +39,39 @@ a:focus-visible,button:focus-visible{outline:2.5px solid var(--gold-2); outline-
 .wordmark svg{width:22px; height:22px}
 .back{font-weight:600; text-decoration:none; border-bottom:1.5px solid var(--gold); padding-bottom:.1rem}
 
-.hero{padding-block:clamp(3rem,8vw,5rem) 1.5rem}
+.hero{padding-block:clamp(3rem,8vw,5rem) .5rem}
 .hero h1{font-size:clamp(2.2rem,1.3rem + 4vw,3.8rem); line-height:1.05; margin-top:.9rem}
 .hero h1 em{color:var(--fern); font-style:italic}
 
-.plate{background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:1.6rem 1.5rem; margin-top:1.4rem}
-.plate .mono{display:block; margin-bottom:.5rem}
-.ip{font-family:var(--mono); font-size:clamp(1.25rem,.8rem + 2.2vw,2rem); word-break:break-all; line-height:1.3; min-height:1.3em}
-.ip.wait{color:var(--ink-3)}
-.row{display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1.2rem; margin-top:1rem}
-.copy{font:inherit; font-weight:600; cursor:pointer; background:var(--fern-2); color:var(--paper); border:0; border-radius:2px; padding:.55rem 1rem; transition:background .18s ease}
-.copy:hover{background:var(--fern)}
-.copy[hidden]{display:none}
-.verdict{font-family:var(--display); font-size:1.5rem}
+.plate,.card{background:var(--card); border:1px solid var(--rule); border-radius:3px; padding:1.4rem 1.4rem 1.3rem}
+.plate .mono{display:block; margin-bottom:.45rem}
+.top-plates{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr)); gap:1.1rem; margin-top:1.6rem}
+.big{font-family:var(--mono); font-size:clamp(1.2rem,.8rem + 2vw,1.85rem); word-break:break-all; line-height:1.3; min-height:1.3em}
+.wait{color:var(--ink-3)}
+.verdict{font-family:var(--display); font-size:1.7rem; line-height:1.2}
 .verdict.yes{color:var(--fern)}
-.detail{margin-top:.35rem; color:var(--ink-2); font-size:.98rem}
-.fine{margin-top:2rem; color:var(--ink-3); font-size:.92rem; max-width:52ch}
+.detail{margin-top:.35rem; color:var(--ink-2); font-size:.96rem}
+
+.btn{font:inherit; font-weight:600; cursor:pointer; background:var(--fern-2); color:var(--paper); border:0; border-radius:2px; padding:.55rem 1rem; transition:background .18s ease}
+.btn:hover{background:var(--fern)}
+.btn[disabled]{background:var(--rule-2); color:var(--ink-3); cursor:default}
+.btn[hidden]{display:none}
+.btn.quiet{background:transparent; color:var(--ink); border:1px solid var(--rule-2)}
+.btn.quiet:hover{background:var(--card); border-color:var(--ink-3)}
+.row{display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1.2rem; margin-top:1rem}
+
+.grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr)); gap:1.1rem; margin-top:1.1rem}
+.card h2{font-size:1.3rem; margin-bottom:.7rem}
+dl{margin:0}
+.kv{display:grid; grid-template-columns:minmax(6.5rem,.8fr) 1.4fr; gap:.2rem .8rem; padding:.42rem 0; border-top:1px solid var(--rule); font-size:.95rem}
+.kv dt{color:var(--ink-3)}
+.kv dd{margin:0; font-family:var(--mono); font-size:.82rem; word-break:break-word; align-self:center}
+.kv dd.wait{font-family:var(--text)}
+.cand{list-style:none; margin:0; padding:0}
+.cand li{padding:.42rem 0; border-top:1px solid var(--rule); font-family:var(--mono); font-size:.8rem; word-break:break-all}
+.cand li small{display:block; font-family:var(--text); font-size:.82rem; color:var(--ink-3)}
+
+.fine{margin-top:2rem; color:var(--ink-3); font-size:.92rem; max-width:62ch}
 footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3rem; color:var(--ink-3); font-size:.92rem}
 </style>
 </head>
@@ -75,26 +92,30 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
     <h1>Where you're <em>connecting from</em>.</h1>
   </section>
 
-  <section class="plate" aria-live="polite">
-    <span class="mono">Your IP address</span>
-    <div class="ip wait" id="ip">Looking it up…</div>
-    <div class="row"><button class="copy" id="copy" type="button" hidden>Copy</button></div>
-  </section>
+  <div class="top-plates" aria-live="polite">
+    <section class="plate">
+      <span class="mono">Your IP address</span>
+      <div class="big wait" id="ip">Looking it up…</div>
+      <div class="row"><button class="btn" id="copy" type="button" hidden>Copy</button></div>
+    </section>
+    <section class="plate">
+      <span class="mono">Your port</span>
+      <div class="big wait" id="port">Looking it up…</div>
+      <p class="detail">The source port your connection came from. Your browser picks it and it changes with every connection.</p>
+    </section>
+    <section class="plate">
+      <span class="mono">Linux check</span>
+      <div class="verdict" id="verdict">Checking…</div>
+      <p class="detail" id="detail"></p>
+    </section>
+  </div>
 
-  <section class="plate">
-    <span class="mono">Your port</span>
-    <div class="ip wait" id="port">Looking it up…</div>
-    <p class="detail">The source port your connection to the lookup service came from. Your browser picks it and it changes with every connection.</p>
-  </section>
+  <div class="grid" id="cards"></div>
 
-  <section class="plate">
-    <span class="mono">This machine</span>
-    <div class="verdict" id="verdict">Checking…</div>
-    <p class="detail" id="detail"></p>
-  </section>
+  <div class="row"><button class="btn quiet" id="copyAll" type="button">Copy everything as text</button></div>
 
-  <noscript><p class="fine">This page needs JavaScript to read your address.</p></noscript>
-  <p class="fine">Only you see this. The address and port come from a one-off request to ifconfig.me from your browser (ipify.org if that fails), and nothing on this page is stored or sent to Rootwork.</p>
+  <noscript><p class="fine">This page needs JavaScript to read your connection.</p></noscript>
+  <p class="fine">Only you see this. Your browser makes the requests directly to ifconfig.me, ipify.org, ipwho.is, ipinfo.io and Cloudflare (including its speed test), and asks Google's STUN server how your network looks from outside. Nothing on this page is stored or sent to Rootwork. Location is worked out from your IP address, so it can be a town or two off, or wrong if you're on a VPN.</p>
 </main>
 
 <footer><div class="sheet">Rootwork is a quiet place to track pain. <a href="../download/">Download it</a>.</div></footer>
@@ -102,70 +123,280 @@ footer{border-top:1px solid var(--rule); margin-top:3rem; padding-block:2rem 3re
 <script>
 (function () {
   "use strict";
-  var ipEl = document.getElementById("ip");
-  var copyBtn = document.getElementById("copy");
+  var $ = function (id) { return document.getElementById(id); };
 
-  var portEl = document.getElementById("port");
+  var sections = [
+    ["Addresses", [["Connecting over", "family"], ["IPv4", "v4"], ["IPv6", "v6"], ["Reverse DNS", "rdns"]]],
+    ["Provider", [["Network", "org"], ["ASN", "asn"], ["ISP", "isp"], ["Domain", "domain"]]],
+    ["Location", [["City", "city"], ["Region", "region"], ["Country", "country"], ["Postal code", "postal"],
+                  ["Coordinates", "coords"], ["Network timezone", "iptz"], ["Browser timezone", "btz"], ["Timezones agree", "tzmatch"]]],
+    ["Your connection", [["Link type", "ctype"], ["Effective type", "etype"], ["Downlink", "downlink"],
+                         ["Browser RTT", "crtt"], ["Data saver", "saver"], ["Online", "online"], ["Page protocol", "proto"]]],
+    ["Cloudflare edge", [["Data centre", "colo"], ["HTTP", "http"], ["TLS", "tls"], ["Key exchange", "kex"],
+                         ["WARP", "warp"], ["Gateway", "gateway"]]],
+    ["This machine", [["Platform", "plat"], ["Browser", "ua"], ["Languages", "lang"], ["CPU threads", "cores"],
+                      ["Memory", "mem"], ["Screen", "screen"], ["Touch points", "touch"], ["Cookies", "cookies"],
+                      ["Do Not Track", "dnt"], ["Global Privacy Control", "gpc"]]]
+  ];
+  var speedRows = [["Latency", "lat"], ["Best ping", "latmin"], ["Jitter", "jitter"], ["Download", "down"], ["Upload", "up"]];
 
-  function show(el, text) {
-    el.textContent = text;
+  function rowHtml(r) {
+    return '<div class="kv"><dt>' + r[0] + '</dt><dd id="' + r[1] + '" class="wait">…</dd></div>';
+  }
+  var html = sections.map(function (s) {
+    return '<section class="card"><h2>' + s[0] + '</h2><dl>' + s[1].map(rowHtml).join("") + '</dl></section>';
+  }).join("");
+  html += '<section class="card"><h2>Speed</h2><dl>' + speedRows.map(rowHtml).join("") + '</dl>' +
+          '<div class="row"><button class="btn" id="speedBtn" type="button">Run speed test</button>' +
+          '<span class="detail" id="speedNote">Downloads about 10 MB and uploads 2 MB.</span></div></section>';
+  html += '<section class="card"><h2>WebRTC</h2><ul class="cand" id="cands"><li class="wait">Gathering…</li></ul>' +
+          '<p class="detail">What a web page can learn about your network through WebRTC. Local addresses are usually hidden behind a random <code>.local</code> name.</p></section>';
+  $("cards").innerHTML = html;
+
+  function set(id, v) {
+    var el = $(id);
+    if (!el) return;
+    el.textContent = (v === undefined || v === null || v === "") ? "—" : v;
     el.classList.remove("wait");
   }
+  function setAll(ids, v) { ids.forEach(function (id) { set(id, v); }); }
   function getJson(url) {
     return fetch(url, { cache: "no-store" }).then(function (r) {
       if (!r.ok) throw new Error(r.status);
       return r.json();
     });
   }
+  function getText(url) {
+    return fetch(url, { cache: "no-store" }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      return r.text();
+    });
+  }
+  function yesNo(b) { return b ? "Yes" : "No"; }
+  var NA = "Unavailable";
 
+  // main address + port
   getJson("https://ifconfig.me/all.json")
     .then(function (j) { return { ip: j.ip_addr, port: j.port }; })
     .catch(function () {
       return getJson("https://api64.ipify.org?format=json").then(function (j) { return { ip: j.ip }; });
     })
     .then(function (r) {
-      show(ipEl, r.ip);
-      show(portEl, r.port || "Not available from this lookup");
-      copyBtn.hidden = false;
+      set("ip", r.ip);
+      set("port", r.port || "Not available from this lookup");
+      set("family", r.ip.indexOf(":") > -1 ? "IPv6" : "IPv4");
+      $("copy").hidden = false;
     }, function () {
-      show(ipEl, "Couldn't reach the lookup service.");
-      show(portEl, "Couldn't reach the lookup service.");
+      set("ip", "Couldn't reach the lookup service.");
+      setAll(["port", "family"], NA);
     });
 
-  copyBtn.addEventListener("click", function () {
-    if (!navigator.clipboard) return;
-    navigator.clipboard.writeText(ipEl.textContent).then(function () {
-      copyBtn.textContent = "Copied";
-      setTimeout(function () { copyBtn.textContent = "Copy"; }, 1600);
-    });
+  getJson("https://api.ipify.org?format=json").then(function (j) { set("v4", j.ip); },
+    function () { set("v4", "None. This network has no IPv4 route, or it was blocked."); });
+  getJson("https://api6.ipify.org?format=json").then(function (j) { set("v6", j.ip); },
+    function () { set("v6", "None. This network is IPv4 only, or it was blocked."); });
+
+  getJson("https://ipwho.is/").then(function (j) {
+    if (j.success === false) throw new Error(j.message);
+    var c = j.connection || {};
+    set("org", c.org);
+    set("asn", c.asn ? "AS" + c.asn : "");
+    set("isp", c.isp);
+    set("domain", c.domain);
+    set("city", j.city);
+    set("region", j.region);
+    set("country", j.country ? (j.flag && j.flag.emoji ? j.flag.emoji + " " : "") + j.country : "");
+    set("postal", j.postal);
+    set("coords", j.latitude != null ? j.latitude.toFixed(3) + ", " + j.longitude.toFixed(3) : "");
+    var tz = j.timezone || {};
+    set("iptz", tz.id ? tz.id + (tz.abbr ? " (" + tz.abbr + ")" : "") : "");
+    var bz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    set("tzmatch", !tz.id ? "—" : tz.id === bz ? "Yes" : "No (your browser says " + bz + ")");
+  }, function () {
+    setAll(["org", "asn", "isp", "domain", "city", "region", "country", "postal", "coords", "iptz", "tzmatch"], NA);
   });
 
-  var ua = navigator.userAgent || "";
-  var verdict = document.getElementById("verdict");
-  var detail = document.getElementById("detail");
-  var isLinux = /Linux|X11/.test(ua) && !/Android/.test(ua);
+  getJson("https://ipinfo.io/json").then(function (j) {
+    set("rdns", j.hostname || "None set");
+  }, function () { set("rdns", NA); });
 
+  getText("https://www.cloudflare.com/cdn-cgi/trace").then(function (t) {
+    var o = {};
+    t.split("\n").forEach(function (l) { var i = l.indexOf("="); if (i > 0) o[l.slice(0, i)] = l.slice(i + 1); });
+    set("colo", o.colo);
+    set("http", o.http);
+    set("tls", o.tls);
+    set("kex", o.kex);
+    set("warp", o.warp === "on" ? "On" : o.warp === "plus" ? "On (WARP+)" : "Off");
+    set("gateway", o.gateway === "on" ? "On" : "Off");
+  }, function () { setAll(["colo", "http", "tls", "kex", "warp", "gateway"], NA); });
+
+  // what the browser itself will tell us
+  var nav = navigator;
+  var conn = nav.connection || nav.mozConnection || nav.webkitConnection;
+  var NOTEXP = "Not shared by this browser";
+  if (conn) {
+    set("ctype", conn.type || NOTEXP);
+    set("etype", conn.effectiveType);
+    set("downlink", conn.downlink != null ? conn.downlink + " Mbit/s" : "");
+    set("crtt", conn.rtt != null ? conn.rtt + " ms" : "");
+    set("saver", yesNo(conn.saveData));
+  } else {
+    setAll(["ctype", "etype", "downlink", "crtt", "saver"], NOTEXP);
+  }
+  set("online", yesNo(nav.onLine));
+  var navEntry = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+  set("proto", navEntry && navEntry.nextHopProtocol ? navEntry.nextHopProtocol : "");
+  set("btz", Intl.DateTimeFormat().resolvedOptions().timeZone);
+
+  var ua = nav.userAgent || "";
+  var isLinux = /Linux|X11/.test(ua) && !/Android/.test(ua);
+  var osName = /Android/.test(ua) ? "Android" : /iPhone|iPad|iPod/.test(ua) ? "iOS" : /Windows/.test(ua) ? "Windows"
+             : /Mac/.test(ua) ? "macOS" : isLinux ? "Linux" : "something else";
+  set("plat", (nav.userAgentData && nav.userAgentData.platform) || nav.platform || osName);
+  set("ua", ua);
+  set("lang", (nav.languages && nav.languages.length ? nav.languages : [nav.language]).join(", "));
+  set("cores", nav.hardwareConcurrency);
+  set("mem", nav.deviceMemory ? "About " + nav.deviceMemory + " GB" : NOTEXP);
+  set("screen", screen.width + " × " + screen.height + " at " + (window.devicePixelRatio || 1) + "x");
+  set("touch", nav.maxTouchPoints || "0");
+  set("cookies", yesNo(nav.cookieEnabled));
+  set("dnt", nav.doNotTrack === "1" ? "On" : "Off");
+  set("gpc", nav.globalPrivacyControl ? "On" : "Off");
+
+  // the linux verdict
+  var verdict = $("verdict"), detail = $("detail");
   function report(arch) {
     if (isLinux) {
       verdict.textContent = "Linux";
       verdict.classList.add("yes");
       detail.textContent = arch === "arm" ? "ARM (64-bit). The ARM Linux build is the one for you."
                                           : "Intel/AMD (64-bit). The x64 Linux build is the one for you.";
-      return;
+    } else {
+      verdict.textContent = "Not Linux";
+      detail.textContent = "This reads as " + osName + ".";
     }
-    var name = /Android/.test(ua) ? "Android" : /iPhone|iPad|iPod/.test(ua) ? "iOS"
-             : /Windows/.test(ua) ? "Windows" : /Mac/.test(ua) ? "macOS" : "something else";
-    verdict.textContent = "Not Linux";
-    detail.textContent = "This reads as " + name + ".";
   }
-
-  var uad = navigator.userAgentData;
+  var armUA = /aarch64|arm64|armv8/i.test(ua) ? "arm" : "x86";
+  var uad = nav.userAgentData;
   if (isLinux && uad && uad.getHighEntropyValues) {
-    uad.getHighEntropyValues(["architecture"]).then(
-      function (v) { report(v.architecture); },
-      function () { report(/aarch64|arm64|armv8/i.test(ua) ? "arm" : "x86"); }
-    );
-  } else report(/aarch64|arm64|armv8/i.test(ua) ? "arm" : "x86");
+    uad.getHighEntropyValues(["architecture"]).then(function (v) { report(v.architecture); }, function () { report(armUA); });
+  } else report(armUA);
+
+  // latency, a few tiny requests; the first one pays for the handshake so it's thrown away
+  var SPEED = "https://speed.cloudflare.com/";
+  function ping() {
+    var t = performance.now();
+    return fetch(SPEED + "__down?bytes=0&r=" + Math.random(), { cache: "no-store" })
+      .then(function (r) { return r.arrayBuffer(); })
+      .then(function () { return performance.now() - t; });
+  }
+  var medianLatency = 0;
+  function measureLatency() {
+    var times = [], n = 0;
+    function next() {
+      if (n++ >= 9) return Promise.resolve();
+      return ping().then(function (ms) { times.push(ms); return next(); });
+    }
+    return next().then(function () {
+      times.shift();
+      var sorted = times.slice().sort(function (a, b) { return a - b; });
+      medianLatency = sorted[Math.floor(sorted.length / 2)];
+      var jit = 0;
+      for (var i = 1; i < times.length; i++) jit += Math.abs(times[i] - times[i - 1]);
+      set("lat", Math.round(medianLatency) + " ms");
+      set("latmin", Math.round(sorted[0]) + " ms");
+      set("jitter", (jit / (times.length - 1)).toFixed(1) + " ms");
+    }, function () { setAll(["lat", "latmin", "jitter"], NA); });
+  }
+  measureLatency();
+  setAll(["down", "up"], "Not run yet");
+
+  var speedBtn = $("speedBtn");
+  speedBtn.addEventListener("click", function () {
+    speedBtn.disabled = true;
+    speedBtn.textContent = "Testing…";
+    set("down", "Testing…"); set("up", "Testing…");
+    var mbit = function (bytes, ms) { return (bytes * 8 / 1e6 / (Math.max(ms - medianLatency, 1) / 1000)).toFixed(1) + " Mbit/s"; };
+    var DOWN = 10e6, UP = 2e6;
+    var t0 = performance.now();
+    fetch(SPEED + "__down?bytes=" + DOWN, { cache: "no-store" })
+      .then(function (r) { return r.arrayBuffer(); })
+      .then(function () {
+        set("down", mbit(DOWN, performance.now() - t0));
+        var t1 = performance.now();
+        return fetch(SPEED + "__up", { method: "POST", body: new Blob([new Uint8Array(UP)]), headers: { "Content-Type": "text/plain" } })
+          .then(function () { set("up", mbit(UP, performance.now() - t1)); });
+      })
+      .catch(function () { setAll(["down", "up"], "Test failed"); })
+      .then(function () {
+        speedBtn.disabled = false;
+        speedBtn.textContent = "Run it again";
+      });
+  });
+
+  // webrtc: local and public addresses the browser will hand to any page
+  var cands = $("cands");
+  var seen = {};
+  function addCandidate(line) {
+    var p = line.replace(/^candidate:/, "").split(" ");
+    var addr = p[4], port = p[5], proto = p[2], type = p[7];
+    var key = type + addr + port + proto;
+    if (!addr || seen[key]) return;
+    seen[key] = 1;
+    var what = type === "host" ? (/\.local$/.test(addr) ? "Local address, hidden by your browser" : "Local address")
+             : type === "srflx" ? "Public address as seen by STUN" : type === "relay" ? "Relayed" : type;
+    var li = document.createElement("li");
+    li.textContent = addr + " : " + port + " / " + proto;
+    var s = document.createElement("small");
+    s.textContent = what;
+    li.appendChild(s);
+    if (cands.firstChild && cands.firstChild.classList.contains("wait")) cands.textContent = "";
+    cands.appendChild(li);
+  }
+  function webrtcDone() {
+    if (cands.firstChild && cands.firstChild.classList.contains("wait")) {
+      cands.firstChild.textContent = "Nothing exposed. WebRTC is blocked or disabled here.";
+      cands.firstChild.classList.remove("wait");
+    }
+  }
+  if (window.RTCPeerConnection) {
+    try {
+      var pc = new RTCPeerConnection({ iceServers: [{ urls: "stun:stun.l.google.com:19302" }] });
+      pc.createDataChannel("probe");
+      pc.onicecandidate = function (e) {
+        if (e.candidate) addCandidate(e.candidate.candidate);
+        else { pc.close(); webrtcDone(); }
+      };
+      pc.createOffer().then(function (o) { return pc.setLocalDescription(o); }).catch(webrtcDone);
+      setTimeout(function () { pc.close(); webrtcDone(); }, 6000);
+    } catch (e) { webrtcDone(); }
+  } else webrtcDone();
+
+  // copy buttons
+  function flash(btn, text, back) {
+    btn.textContent = text;
+    setTimeout(function () { btn.textContent = back; }, 1600);
+  }
+  $("copy").addEventListener("click", function () {
+    var btn = this;
+    if (navigator.clipboard) navigator.clipboard.writeText($("ip").textContent).then(function () { flash(btn, "Copied", "Copy"); });
+  });
+  $("copyAll").addEventListener("click", function () {
+    var btn = this;
+    var lines = ["IP address: " + $("ip").textContent, "Port: " + $("port").textContent,
+                 "Linux check: " + verdict.textContent + " (" + detail.textContent + ")"];
+    Array.prototype.forEach.call(document.querySelectorAll(".card"), function (card) {
+      lines.push("", card.querySelector("h2").textContent);
+      Array.prototype.forEach.call(card.querySelectorAll(".kv"), function (kv) {
+        lines.push(kv.querySelector("dt").textContent + ": " + kv.querySelector("dd").textContent);
+      });
+      Array.prototype.forEach.call(card.querySelectorAll(".cand li"), function (li) {
+        lines.push(li.firstChild.textContent + " (" + li.querySelector("small").textContent + ")");
+      });
+    });
+    if (navigator.clipboard) navigator.clipboard.writeText(lines.join("\n")).then(function () { flash(btn, "Copied", "Copy everything as text"); });
+  });
 })();
 </script>
 </body>
